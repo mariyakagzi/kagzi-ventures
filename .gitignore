@@ -1,0 +1,11 @@
+.env
+/writable/debugbar/*
+/writable/session/*
+/writable/cache/*
+/writable/logs/*
+!/writable/debugbar/index.html
+!/writable/session/index.html
+!/writable/cache/index.html
+!/writable/logs/index.html
+.DS_Store
+Thumbs.db

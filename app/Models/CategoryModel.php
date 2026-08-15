@@ -19,6 +19,7 @@ class CategoryModel extends Model
         'image',
         'parent_id',
         'status',
+        'show_on_home',
         'created_at',
         'updated_at',
     ];
@@ -28,5 +29,10 @@ class CategoryModel extends Model
     public function getActiveCategories()
     {
         return $this->where('status', 1)->orderBy('name', 'ASC')->findAll();
+    }
+
+    public function getHomeCategories()
+    {
+        return $this->where('status', 1)->where('show_on_home', 1)->orderBy('id', 'ASC')->findAll();
     }
 }

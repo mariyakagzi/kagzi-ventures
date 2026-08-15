@@ -41,7 +41,7 @@
                         </div>
                         <div>
                             <h6 class="mb-0 font-weight-bold text-dark">Phone</h6>
-                            <p class="mb-0 text-muted"><a href="tel:9753875213" class="text-dark font-weight-semibold">9753875213</a></p>
+                            <p class="mb-0 text-muted"><a href="tel:+919753875213" class="text-dark font-weight-semibold">+91 9753875213</a></p>
                         </div>
                     </div>
 
@@ -60,7 +60,7 @@
             <div class="col-lg-6">
                 <div class="card border-0 shadow-sm p-4" style="border-radius: 12px; background: #f8fafc;">
                     <h3 class="font-weight-bold text-dark mb-1">Send Us a Message</h3>
-                    <p class="text-muted small mb-3"><i class="fab fa-whatsapp text-success mr-1"></i> Form responses are sent directly to our WhatsApp support line (9753875213)</p>
+                    <p class="text-muted small mb-3"><i class="fab fa-whatsapp text-success mr-1"></i> Form responses are sent directly to our WhatsApp support line (+91 9753875213)</p>
                     
                     <form id="whatsappContactForm" action="<?= base_url('contact/send') ?>" method="post" target="_blank">
                         <div class="form-group mb-3">

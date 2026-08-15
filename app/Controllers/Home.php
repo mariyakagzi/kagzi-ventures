@@ -12,15 +12,31 @@ class Home extends BaseController
         $productModel  = new ProductModel();
         $categoryModel = new CategoryModel();
 
-        $featuredProducts = $productModel->getFeaturedProducts(8);
-        $trendingProducts = $productModel->getTrendingProducts(8);
-        $allCategories    = $categoryModel->getActiveCategories();
+        $featuredProducts   = $productModel->getFeaturedProducts(8);
+        $trendingProducts   = $productModel->getTrendingProducts(8);
+        $bestSellerProducts = $productModel->getBestSellerProducts(8);
+        $allCategories      = $categoryModel->getActiveCategories();
+
+        $homeCategories       = $categoryModel->getHomeCategories();
+        $homeCategorySections = [];
+
+        foreach ($homeCategories as $hCat) {
+            $catProducts = $productModel->getHomeCategoryProducts((int)$hCat['id'], 8);
+            if (!empty($catProducts)) {
+                $homeCategorySections[] = [
+                    'category' => $hCat,
+                    'products' => $catProducts,
+                ];
+            }
+        }
 
         $data = [
-            'title'            => 'Kagzi Ventures - Home',
-            'featuredProducts' => $featuredProducts,
-            'trendingProducts' => $trendingProducts,
-            'allCategories'    => $allCategories,
+            'title'                => 'Kagzi Ventures - Home',
+            'featuredProducts'     => $featuredProducts,
+            'trendingProducts'     => $trendingProducts,
+            'bestSellerProducts'   => $bestSellerProducts,
+            'allCategories'        => $allCategories,
+            'homeCategorySections' => $homeCategorySections,
         ];
 
         return view('home', $data);

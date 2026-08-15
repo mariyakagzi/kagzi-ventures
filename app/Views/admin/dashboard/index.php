@@ -84,10 +84,10 @@
                             <td><span class="badge badge-secondary px-2 py-1"><?= esc($p['category_name'] ?? 'Uncategorized') ?></span></td>
                             <td>
                                 <?php if ($p['sale_price']): ?>
-                                    <span class="text-success font-weight-bold">$<?= number_format($p['sale_price'], 2) ?></span>
-                                    <small class="text-muted" style="text-decoration: line-through;">$<?= number_format($p['price'], 2) ?></small>
+                                    <span class="text-success font-weight-bold">₹<?= number_format($p['sale_price'], 2) ?></span>
+                                    <small class="text-muted" style="text-decoration: line-through;">₹<?= number_format($p['price'], 2) ?></small>
                                 <?php else: ?>
-                                    <span class="font-weight-bold">$<?= number_format($p['price'], 2) ?></span>
+                                    <span class="font-weight-bold">₹<?= number_format($p['price'], 2) ?></span>
                                 <?php endif; ?>
                             </td>
                             <td>

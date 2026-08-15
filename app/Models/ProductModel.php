@@ -26,8 +26,10 @@ class ProductModel extends Model
         'description',
         'main_image',
         'images',
+        'video',
         'featured',
         'is_trending',
+        'is_home_category',
         'status',
         'created_at',
         'updated_at',
@@ -126,5 +128,36 @@ class ProductModel extends Model
                     ->where('products.status', 1)
                     ->orderBy('products.id', 'DESC')
                     ->findAll($limit);
+    }
+
+    public function getBestSellerProducts(int $limit = 8)
+    {
+        return $this->select('products.*, categories.name as category_name, categories.slug as category_slug')
+                    ->join('categories', 'categories.id = products.category_id', 'left')
+                    ->where('products.status', 1)
+                    ->orderBy('products.id', 'DESC')
+                    ->findAll($limit);
+    }
+
+    public function getHomeCategoryProducts(int $categoryId, int $limit = 8)
+    {
+        $products = $this->select('products.*, categories.name as category_name, categories.slug as category_slug')
+                         ->join('categories', 'categories.id = products.category_id', 'left')
+                         ->where('products.status', 1)
+                         ->where('products.category_id', $categoryId)
+                         ->where('products.is_home_category', 1)
+                         ->orderBy('products.id', 'DESC')
+                         ->findAll($limit);
+
+        if (empty($products)) {
+            $products = $this->select('products.*, categories.name as category_name, categories.slug as category_slug')
+                             ->join('categories', 'categories.id = products.category_id', 'left')
+                             ->where('products.status', 1)
+                             ->where('products.category_id', $categoryId)
+                             ->orderBy('products.id', 'DESC')
+                             ->findAll($limit);
+        }
+
+        return $products;
     }
 }

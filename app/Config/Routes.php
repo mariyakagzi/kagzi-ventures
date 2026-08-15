@@ -60,6 +60,10 @@ $routes->group('admin', static function ($routes) {
     $routes->get('categories/edit/(:num)', 'Admin\Categories::edit/$1');
     $routes->post('categories/update/(:num)', 'Admin\Categories::update/$1');
     $routes->get('categories/delete/(:num)', 'Admin\Categories::delete/$1');
+
+    // AI Generator Routes
+    $routes->post('ai/generate', 'Admin\AiGenerator::generate');
+    $routes->post('ai/save-key', 'Admin\AiGenerator::saveApiKey');
 });
 
 /*

@@ -58,6 +58,20 @@ class Products extends BaseAdminController
             $mainImagePath = 'uploads/products/' . $newName;
         }
 
+        $videoPath = null;
+        $videoFile = $this->request->getFile('video');
+        if ($videoFile && $videoFile->isValid() && !$videoFile->hasMoved()) {
+            $uploadDir = FCPATH . 'uploads/products/videos/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+            $newVideoName = $videoFile->getRandomName();
+            $videoFile->move($uploadDir, $newVideoName);
+            $videoPath = 'uploads/products/videos/' . $newVideoName;
+        } elseif (!empty($this->request->getPost('video_url'))) {
+            $videoPath = trim($this->request->getPost('video_url'));
+        }
+
         $data = [
             'name'              => $name,
             'slug'              => $slug,
@@ -71,8 +85,10 @@ class Products extends BaseAdminController
             'specifications'    => trim($this->request->getPost('specifications')),
             'description'       => trim($this->request->getPost('description')),
             'main_image'        => $mainImagePath,
+            'video'             => $videoPath,
             'featured'          => $this->request->getPost('featured') ? 1 : 0,
             'is_trending'       => $this->request->getPost('is_trending') ? 1 : 0,
+            'is_home_category'  => $this->request->getPost('is_home_category') ? 1 : 0,
             'status'            => $this->request->getPost('status') ? 1 : 0,
         ];
 
@@ -129,6 +145,22 @@ class Products extends BaseAdminController
             $mainImagePath = 'uploads/products/' . $newName;
         }
 
+        $videoPath = $product['video'] ?? null;
+        $videoFile = $this->request->getFile('video');
+        if ($videoFile && $videoFile->isValid() && !$videoFile->hasMoved()) {
+            $uploadDir = FCPATH . 'uploads/products/videos/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+            $newVideoName = $videoFile->getRandomName();
+            $videoFile->move($uploadDir, $newVideoName);
+            $videoPath = 'uploads/products/videos/' . $newVideoName;
+        } elseif ($this->request->getPost('remove_video')) {
+            $videoPath = null;
+        } elseif (!empty($this->request->getPost('video_url'))) {
+            $videoPath = trim($this->request->getPost('video_url'));
+        }
+
         $updateData = [
             'name'              => $name,
             'slug'              => $slug,
@@ -142,8 +174,10 @@ class Products extends BaseAdminController
             'specifications'    => trim($this->request->getPost('specifications')),
             'description'       => trim($this->request->getPost('description')),
             'main_image'        => $mainImagePath,
+            'video'             => $videoPath,
             'featured'          => $this->request->getPost('featured') ? 1 : 0,
             'is_trending'       => $this->request->getPost('is_trending') ? 1 : 0,
+            'is_home_category'  => $this->request->getPost('is_home_category') ? 1 : 0,
             'status'            => $this->request->getPost('status') ? 1 : 0,
         ];
 

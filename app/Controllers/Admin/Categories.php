@@ -50,11 +50,12 @@ class Categories extends BaseAdminController
         }
 
         $data = [
-            'name'        => $name,
-            'slug'        => $slug,
-            'description' => trim($this->request->getPost('description')),
-            'image'       => $imagePath,
-            'status'      => $this->request->getPost('status') ? 1 : 0,
+            'name'         => $name,
+            'slug'         => $slug,
+            'description'  => trim($this->request->getPost('description')),
+            'image'        => $imagePath,
+            'show_on_home' => $this->request->getPost('show_on_home') ? 1 : 0,
+            'status'       => $this->request->getPost('status') ? 1 : 0,
         ];
 
         $categoryModel->insert($data);
@@ -106,11 +107,12 @@ class Categories extends BaseAdminController
         }
 
         $updateData = [
-            'name'        => $name,
-            'slug'        => $slug,
-            'description' => trim($this->request->getPost('description')),
-            'image'       => $imagePath,
-            'status'      => $this->request->getPost('status') ? 1 : 0,
+            'name'         => $name,
+            'slug'         => $slug,
+            'description'  => trim($this->request->getPost('description')),
+            'image'        => $imagePath,
+            'show_on_home' => $this->request->getPost('show_on_home') ? 1 : 0,
+            'status'       => $this->request->getPost('status') ? 1 : 0,
         ];
 
         $categoryModel->update($id, $updateData);

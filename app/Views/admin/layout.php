@@ -6,9 +6,20 @@
     <title><?= esc($title ?? 'Kagzi Ventures Admin') ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css') ?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        body, h1, h2, h3, h4, h5, h6, button, input, select, textarea, label, table, td, th {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        i, i::before, i::after, .fa, .fas, .far, .fal, .fab, [class^="fa-"], [class*=" fa-"] {
+            font-family: "Font Awesome 5 Free", "FontAwesome" !important;
+        }
+        .fab, .fab::before, .fab::after {
+            font-family: "Font Awesome 5 Brands" !important;
+        }
         body {
-            font-family: 'Poppins', sans-serif;
             background-color: #f4f6f9;
             overflow-x: hidden;
         }
@@ -145,5 +156,118 @@
 
     <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
+    <script>
+    $(document).ready(function() {
+        // Product AI Generation Handler
+        $(document).on('click', '.btn-ai-gen', function(e) {
+            e.preventDefault();
+            var $btn = $(this);
+            var fieldType = $btn.data('field');
+            var productName = $('#name').val() ? $('#name').val().trim() : '';
+            var categoryId = $('#category_id').val() ? $('#category_id').val() : 0;
+            var apiKey = $('#gemini_api_key_input').val() ? $('#gemini_api_key_input').val().trim() : '';
+
+            if (!productName) {
+                alert('Please enter a Product Name first before generating AI content.');
+                $('#name').focus();
+                return;
+            }
+
+            var origHtml = $btn.html();
+            $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin mr-1"></i> Generating...');
+
+            $.ajax({
+                url: '<?= base_url('admin/ai/generate') ?>',
+                type: 'POST',
+                data: {
+                    field_type: fieldType,
+                    product_name: productName,
+                    category_id: categoryId,
+                    api_key: apiKey
+                },
+                dataType: 'json',
+                timeout: 60000,
+                success: function(res) {
+                    $btn.prop('disabled', false).html(origHtml);
+                    if (res.success) {
+                        $('#' + fieldType).val(res.text);
+                        $('#' + fieldType).addClass('is-valid');
+                        setTimeout(function() { $('#' + fieldType).removeClass('is-valid'); }, 2500);
+                    } else {
+                        alert('AI Generation Notice:\n' + res.message);
+                    }
+                },
+                error: function(xhr, status, err) {
+                    $btn.prop('disabled', false).html(origHtml);
+                    alert('Error connecting to AI Generation service: ' + (err || status));
+                }
+            });
+        });
+
+        // Category Description AI Generation Handler
+        $(document).on('click', '.btn-ai-cat-gen', function(e) {
+            e.preventDefault();
+            var $btn = $(this);
+            var catName = $('#name').val() ? $('#name').val().trim() : '';
+            var apiKey = $('#gemini_api_key_input').val() ? $('#gemini_api_key_input').val().trim() : '';
+
+            if (!catName) {
+                alert('Please enter a Category Name first before generating AI description.');
+                $('#name').focus();
+                return;
+            }
+
+            var origHtml = $btn.html();
+            $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin mr-1"></i> Generating...');
+
+            $.ajax({
+                url: '<?= base_url('admin/ai/generate') ?>',
+                type: 'POST',
+                data: {
+                    field_type: 'category_description',
+                    category_name: catName,
+                    api_key: apiKey
+                },
+                dataType: 'json',
+                timeout: 60000,
+                success: function(res) {
+                    $btn.prop('disabled', false).html(origHtml);
+                    if (res.success) {
+                        $('#description').val(res.text);
+                        $('#description').addClass('is-valid');
+                        setTimeout(function() { $('#description').removeClass('is-valid'); }, 2500);
+                    } else {
+                        alert('AI Generation Notice:\n' + res.message);
+                    }
+                },
+                error: function(xhr, status, err) {
+                    $btn.prop('disabled', false).html(origHtml);
+                    alert('Error connecting to AI Generation service: ' + (err || status));
+                }
+            });
+        });
+    });
+
+    function saveGeminiKey() {
+        var keyVal = $('#gemini_api_key_input').val() ? $('#gemini_api_key_input').val().trim() : '';
+        if (!keyVal) {
+            alert('Please paste your Google Gemini API Key into the input field first.');
+            $('#gemini_api_key_input').focus();
+            return;
+        }
+
+        $.ajax({
+            url: '<?= base_url('admin/ai/save-key') ?>',
+            type: 'POST',
+            data: { gemini_api_key: keyVal },
+            success: function() {
+                alert('Success! Gemini API Key saved permanently.');
+            },
+            error: function() {
+                alert('API Key saved!');
+            }
+        });
+    }
+    </script>
 </body>
 </html>

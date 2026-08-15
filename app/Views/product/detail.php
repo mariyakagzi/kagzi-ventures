@@ -41,6 +41,34 @@
                             <?php endif; ?>
                         </div>
                     </div>
+
+                    <?php if (!empty($product['video'])): ?>
+                        <div class="product-video-box mt-3 p-3 bg-dark text-white rounded shadow-sm text-center">
+                            <h6 class="text-white font-weight-bold mb-2 d-flex align-items-center justify-content-center">
+                                <i class="fa fa-play-circle text-danger mr-2" style="font-size: 1.3rem;"></i> Product Video
+                            </h6>
+                            <?php if (filter_var($product['video'], FILTER_VALIDATE_URL) && (strpos($product['video'], 'youtube.com') !== false || strpos($product['video'], 'youtu.be') !== false)): ?>
+                                <?php 
+                                    preg_match('/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/', $product['video'], $matches);
+                                    $ytId = $matches[1] ?? '';
+                                ?>
+                                <?php if ($ytId): ?>
+                                    <div class="embed-responsive embed-responsive-16by9 rounded overflow-hidden">
+                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $ytId ?>" allowfullscreen></iframe>
+                                    </div>
+                                <?php else: ?>
+                                    <video controls class="w-100 rounded" style="max-height: 280px; object-fit: contain;">
+                                        <source src="<?= esc($product['video']) ?>">
+                                    </video>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <video controls class="w-100 rounded" style="max-height: 280px; object-fit: contain;" poster="<?= base_url($product['main_image']) ?>">
+                                    <source src="<?= base_url($product['video']) ?>">
+                                    Your browser does not support HTML5 video.
+                                </video>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Product Details -->
@@ -60,11 +88,11 @@
                     <div class="price-box d-flex align-items-center mb-3">
                         <?php if (!empty($product['sale_price']) && $product['sale_price'] < $product['price']): ?>
                             <?php $discountPercent = round((($product['price'] - $product['sale_price']) / $product['price']) * 100); ?>
-                            <span class="old-price mr-3 text-muted" style="text-decoration: line-through; font-size: 1.25rem;">$<?= number_format($product['price'], 2) ?></span>
-                            <span class="new-price text-primary font-weight-bold mr-3" style="font-size: 2rem;">$<?= number_format($product['sale_price'], 2) ?></span>
+                            <span class="old-price mr-3 text-muted" style="text-decoration: line-through; font-size: 1.25rem;">₹<?= number_format($product['price'], 2) ?></span>
+                            <span class="new-price text-primary font-weight-bold mr-3" style="font-size: 2rem;">₹<?= number_format($product['sale_price'], 2) ?></span>
                             <span class="badge badge-danger font-weight-bold px-2 py-1" style="font-size: 0.9rem;">SAVE <?= $discountPercent ?>%</span>
                         <?php else: ?>
-                            <span class="new-price text-dark font-weight-bold" style="font-size: 2rem;">$<?= number_format($product['price'], 2) ?></span>
+                            <span class="new-price text-dark font-weight-bold" style="font-size: 2rem;">₹<?= number_format($product['price'], 2) ?></span>
                         <?php endif; ?>
                     </div>
 
@@ -111,17 +139,17 @@
                         </li>
                     </ul>
 
-                    <div class="product-action my-4">
-                        <div class="product-single-qty mr-3">
-                            <input class="horizontal-quantity form-control" type="number" value="1" min="1" max="<?= esc($product['stock_quantity'] ?? 10) ?>">
-                        </div>
-
-                        <a href="<?= base_url('cart') ?>" class="btn btn-primary mr-2" title="Add to Cart">
-                            <i class="icon-bag mr-1"></i> ADD TO CART
+                    <div class="product-action my-4 flex-wrap">
+                        <?php
+                            $waMessage = rawurlencode("Hi Kagzi Ventures, I would like to enquire about: " . $product['name'] . " (SKU: " . ($product['sku'] ?? 'N/A') . ")");
+                            $mailSubject = rawurlencode("Product Enquiry: " . $product['name']);
+                        ?>
+                        <a href="https://wa.me/919753875213?text=<?= $waMessage ?>" target="_blank" class="btn btn-success btn-lg font-weight-bold mr-2 my-1 d-inline-flex align-items-center" style="background-color: #25D366; border-color: #25D366; font-size: 1.05rem; padding: 12px 24px; border-radius: 6px;">
+                            <i class="fab fa-whatsapp mr-2" style="font-size: 1.4rem;"></i> Enquire on WhatsApp
                         </a>
 
-                        <a href="<?= base_url('wishlist') ?>" class="btn btn-outline-dark" title="Add to Wishlist">
-                            <i class="icon-wishlist-2 mr-1"></i> Add to Wishlist
+                        <a href="mailto:info@kagziventures.com?subject=<?= $mailSubject ?>" class="btn btn-primary btn-lg font-weight-bold my-1 d-inline-flex align-items-center" style="font-size: 1.05rem; padding: 12px 24px; border-radius: 6px;">
+                            <i class="fa fa-envelope mr-2"></i> Mail Enquiry
                         </a>
                     </div>
 
@@ -148,6 +176,11 @@
                 <li class="nav-item">
                     <a class="nav-link" id="product-tab-more-info" data-toggle="tab" href="#product-more-info-content" role="tab" aria-controls="product-more-info-content" aria-selected="false">Technical Specifications</a>
                 </li>
+                <?php if (!empty($product['video'])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" id="product-tab-video" data-toggle="tab" href="#product-video-content" role="tab" aria-controls="product-video-content" aria-selected="false"><i class="fa fa-play-circle text-danger mr-1"></i> Product Video</a>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item">
                     <a class="nav-link" id="product-tab-reviews" data-toggle="tab" href="#product-reviews-content" role="tab" aria-controls="product-reviews-content" aria-selected="false">Reviews (5)</a>
                 </li>
@@ -191,6 +224,34 @@
                     </div>
                 </div>
 
+                <?php if (!empty($product['video'])): ?>
+                    <div class="tab-pane fade" id="product-video-content" role="tabpanel" aria-labelledby="product-tab-video">
+                        <div class="product-video-tab-content text-center py-3">
+                            <h4 class="font-weight-bold text-dark mb-3"><i class="fa fa-play-circle text-danger mr-2"></i>Product Demonstration Video</h4>
+                            <?php if (filter_var($product['video'], FILTER_VALIDATE_URL) && (strpos($product['video'], 'youtube.com') !== false || strpos($product['video'], 'youtu.be') !== false)): ?>
+                                <?php 
+                                    preg_match('/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/', $product['video'], $matches);
+                                    $ytId = $matches[1] ?? '';
+                                ?>
+                                <?php if ($ytId): ?>
+                                    <div class="embed-responsive embed-responsive-16by9 rounded shadow-sm mx-auto" style="max-width: 720px;">
+                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $ytId ?>" allowfullscreen></iframe>
+                                    </div>
+                                <?php else: ?>
+                                    <video controls class="w-100 rounded shadow-sm mx-auto" style="max-width: 720px; max-height: 420px;">
+                                        <source src="<?= esc($product['video']) ?>">
+                                    </video>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <video controls class="w-100 rounded shadow-sm mx-auto" style="max-width: 720px; max-height: 420px;" poster="<?= base_url($product['main_image']) ?>">
+                                    <source src="<?= base_url($product['video']) ?>">
+                                    Your browser does not support HTML5 video.
+                                </video>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
                 <div class="tab-pane fade" id="product-reviews-content" role="tabpanel" aria-labelledby="product-tab-reviews">
                     <div class="product-reviews-content">
                         <h3 class="reviews-title font2 mb-3">5 Reviews for <?= esc($product['name']) ?></h3>
@@ -228,7 +289,7 @@
                                     <a href="<?= base_url('product/' . $rel['slug']) ?>"><?= esc($rel['name']) ?></a>
                                 </h3>
                                 <div class="price-box my-1">
-                                    <span class="product-price font-weight-bold text-dark">$<?= number_format($rel['sale_price'] ?? $rel['price'], 2) ?></span>
+                                    <span class="product-price font-weight-bold text-dark">₹<?= number_format($rel['sale_price'] ?? $rel['price'], 2) ?></span>
                                 </div>
                             </div>
                         </div>

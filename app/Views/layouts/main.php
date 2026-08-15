@@ -39,6 +39,11 @@ if (!isset($allCategories) || empty($allCategories)) {
         })(document);
     </script>
 
+    <!-- Google Fonts: Sans-Serif Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
 
@@ -46,15 +51,568 @@ if (!isset($allCategories) || empty($allCategories)) {
     <link rel="stylesheet" href="<?= base_url('assets/css/demo1.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/vendor/simple-line-icons/css/simple-line-icons.min.css') ?>">
+
+    <style>
+        /* Modern Sans-Serif Font Applied Globally Across Entire Website */
+        html, body, h1, h2, h3, h4, h5, h6, p, span, a, li, button, input, select, textarea, label, table, td, th, .menu > li > a, .btn, .form-control, .top-message, .product-title, .product-price, .header, .footer, .widget-title, .nav-link {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Preserve FontAwesome & Icon Fonts (Fix Broken Icons) */
+        i, i::before, i::after,
+        .fa, .fa::before, .fa::after,
+        .fas, .fas::before, .fas::after,
+        .far, .far::before, .far::after,
+        .fal, .fal::before, .fal::after,
+        .fab, .fab::before, .fab::after,
+        [class^="icon-"], [class^="icon-"]::before,
+        [class*=" icon-"], [class*=" icon-"]::before,
+        [class^="fa-"], [class^="fa-"]::before,
+        [class*=" fa-"], [class*=" fa-"]::before {
+            font-family: "Font Awesome 5 Free", "FontAwesome", "simple-line-icons", "porto" !important;
+        }
+        .fab, .fab::before, .fab::after,
+        .fa-whatsapp, .fa-whatsapp::before,
+        .fa-facebook, .fa-facebook::before,
+        .fa-twitter, .fa-twitter::before,
+        .fa-instagram, .fa-instagram::before {
+            font-family: "Font Awesome 5 Brands" !important;
+        }
+
+        .newsletter-popup, #newsletter-popup-form, .mfp-bg, .mfp-wrap {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Feminine Luxury Theme - Soft Light Shade & Magenta #C21E56 Custom Overrides */
+        .header-top {
+            background-color: #0f172a !important;
+        }
+        .header-middle {
+            background: linear-gradient(180deg, #fff5f8 0%, #fdf2f8 100%) !important;
+            border-bottom: 1px solid #fbcfe8 !important;
+            padding: 12px 0 !important;
+        }
+        .btn-whatsapp-stylish {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+            border: none !important;
+            padding: 9px 20px !important;
+            border-radius: 50px !important;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3) !important;
+            transition: all 0.3s ease !important;
+            font-size: 12.5px !important;
+            letter-spacing: 0.4px !important;
+            color: #ffffff !important;
+        }
+        .btn-whatsapp-stylish:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45) !important;
+            color: #ffffff !important;
+        }
+        .btn-mail-stylish {
+            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            border: none !important;
+            padding: 9px 20px !important;
+            border-radius: 50px !important;
+            box-shadow: 0 4px 14px rgba(194, 30, 86, 0.3) !important;
+            transition: all 0.3s ease !important;
+            font-size: 12.5px !important;
+            letter-spacing: 0.4px !important;
+            color: #ffffff !important;
+        }
+        .btn-mail-stylish:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(194, 30, 86, 0.45) !important;
+            color: #ffffff !important;
+        }
+        /* Header Middle Padding & Spacing */
+        .header-middle {
+            padding-top: 12px !important;
+            padding-bottom: 8px !important;
+            border-bottom: none !important;
+        }
+
+        /* Main Menu Bar (#C21E56) Flush Fit against Search Section */
+        .header-bottom.custom-main-navbar {
+            background: #C21E56 !important;
+            border-bottom: 3px solid #e11d48 !important;
+            box-shadow: 0 4px 15px rgba(194, 30, 86, 0.35) !important;
+            min-height: 62px !important;
+            padding: 3px 0 !important;
+            margin-top: 0 !important; /* No spacing between search box section and main menu strip */
+            border-top: none !important;
+        }
+
+        /* Sticky Header Scroll Spacing Fix */
+        .sticky-header.fixed {
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12) !important;
+        }
+        .custom-main-navbar .menu > li > a {
+            padding: 16px 24px !important;
+            font-size: 15px !important;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
+            border-radius: 6px;
+        }
+        .custom-main-navbar .menu > li:hover > a,
+        .custom-main-navbar .menu > li.active > a {
+            background-color: rgba(255, 255, 255, 0.22) !important;
+            color: #ffffff !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .text-primary, .product-price.text-primary, .new-price.text-primary {
+            color: #C21E56 !important;
+        }
+        .btn-primary, .btn-outline-primary:hover {
+            background-color: #C21E56 !important;
+            border-color: #C21E56 !important;
+            color: #ffffff !important;
+        }
+        .btn-outline-primary {
+            color: #C21E56 !important;
+            border-color: #C21E56 !important;
+        }
+        .badge-primary, .bg-primary {
+            background-color: #C21E56 !important;
+        }
+
+        /* Quick View Button Theme Override (#C21E56) */
+        .btn-quickview,
+        a.btn-quickview {
+            background: #C21E56 !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            font-size: 11.5px !important;
+            letter-spacing: 0.5px !important;
+            border-radius: 6px !important;
+            padding: 8px 16px !important;
+            box-shadow: 0 4px 12px rgba(194, 30, 86, 0.3) !important;
+            transition: all 0.25s ease !important;
+            border: none !important;
+            opacity: 0.95 !important;
+        }
+        .btn-quickview:hover,
+        a.btn-quickview:hover {
+            background: #9f1239 !important;
+            color: #ffffff !important;
+            box-shadow: 0 6px 18px rgba(194, 30, 86, 0.45) !important;
+            opacity: 1 !important;
+        }
+
+        /* Hide Blue Arrow Button on Product Images */
+        .btn-icon-group,
+        .btn-icon-group .btn-icon,
+        .btn-icon-group .btn-add-cart {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Search Bar & Category Box Border & Pill Styling */
+        .header-search-wrapper {
+            border: 2px solid #f472b6 !important;
+            border-radius: 50px !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 4px 14px rgba(194, 30, 86, 0.12) !important;
+            overflow: hidden !important;
+            display: flex !important;
+            align-items: center !important;
+            padding: 4px 5px 4px 18px !important;
+            height: 48px !important;
+        }
+        .header-search-wrapper input.form-control {
+            border: none !important;
+            box-shadow: none !important;
+            height: 100% !important;
+            padding: 0 10px 0 0 !important;
+            background: transparent !important;
+            font-size: 14px !important;
+        }
+        .header-search-category .select-custom {
+            border-left: 1.5px solid #fbcfe8 !important;
+            background-color: #fff0f5 !important;
+            height: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            padding: 0 12px !important;
+            border-radius: 6px !important;
+            margin: 0 4px !important;
+        }
+        .header-search-category select {
+            border: none !important;
+            color: #334155 !important;
+            font-weight: 600 !important;
+            font-size: 13.5px !important;
+            background: transparent !important;
+            cursor: pointer !important;
+        }
+        .header-search-category .btn.icon-magnifier {
+            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: 40px !important;
+            padding: 0 24px !important;
+            height: 38px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 15px !important;
+            cursor: pointer !important;
+            transition: all 0.25s ease !important;
+        }
+        .header-search-category .btn.icon-magnifier:hover {
+            transform: scale(1.04);
+            box-shadow: 0 4px 12px rgba(194, 30, 86, 0.35) !important;
+            color: #ffffff !important;
+        }
+
+        /* Custom Luxury Dark Navy Footer (Exact Match to Screenshot) */
+        footer.luxury-footer,
+        .luxury-footer {
+            background: #081325 !important;
+            background-color: #081325 !important;
+            color: #94a3b8 !important;
+            font-family: 'Open Sans', sans-serif !important;
+            position: relative !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            font-size: 13.5px !important;
+            border-top: none !important;
+            margin-top: 0 !important;
+        }
+
+        .luxury-footer .footer-ribbon,
+        .luxury-footer .footer-middle,
+        .luxury-footer .footer-bottom {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border: none !important;
+        }
+
+        .luxury-footer-ribbon {
+            position: absolute !important;
+            top: 0 !important;
+            left: 5% !important;
+            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            font-size: 13px !important;
+            padding: 9px 28px 9px 20px !important;
+            border-bottom-right-radius: 12px !important;
+            clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%) !important;
+            box-shadow: 0 4px 15px rgba(194, 30, 86, 0.45) !important;
+            z-index: 10 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+
+        .luxury-footer-main {
+            padding-top: 4.5rem !important;
+            padding-bottom: 3.5rem !important;
+        }
+
+        .luxury-footer-col {
+            position: relative !important;
+        }
+        @media (min-width: 992px) {
+            .luxury-footer-col:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 5%;
+                height: 90%;
+                width: 1px;
+                background: rgba(255, 255, 255, 0.08);
+            }
+        }
+
+        .luxury-footer-heading {
+            color: #ffffff !important;
+            font-size: 15px !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.8px !important;
+            margin-bottom: 22px !important;
+            position: relative !important;
+            padding-bottom: 8px !important;
+        }
+        .luxury-footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 34px;
+            height: 2.5px;
+            background: #C21E56;
+            border-radius: 4px;
+        }
+
+        /* About Us Column */
+        .luxury-logo-card {
+            background: #ffffff !important;
+            border-radius: 10px !important;
+            padding: 10px 18px !important;
+            display: inline-block !important;
+            margin-bottom: 18px !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+        }
+        .luxury-logo-card img {
+            height: 40px !important;
+            width: auto !important;
+            object-fit: contain !important;
+        }
+        .luxury-footer-text {
+            color: #94a3b8 !important;
+            line-height: 1.65 !important;
+            font-size: 13px !important;
+            margin-bottom: 14px !important;
+        }
+        .btn-footer-readmore {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+            color: #ffffff !important;
+            border-radius: 30px !important;
+            padding: 7px 22px !important;
+            font-size: 12.5px !important;
+            font-weight: 700 !important;
+            transition: all 0.25s ease !important;
+            background: transparent !important;
+            text-decoration: none !important;
+        }
+        .btn-footer-readmore:hover {
+            background: #C21E56 !important;
+            border-color: #C21E56 !important;
+            color: #ffffff !important;
+            transform: translateX(4px) !important;
+        }
+
+        /* Contact Info Column */
+        .luxury-contact-item {
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 14px !important;
+            margin-bottom: 18px !important;
+        }
+        .luxury-contact-icon {
+            width: 38px !important;
+            height: 38px !important;
+            min-width: 38px !important;
+            border-radius: 50% !important;
+            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            color: #ffffff !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 15px !important;
+            box-shadow: 0 4px 10px rgba(194, 30, 86, 0.35) !important;
+        }
+        .luxury-contact-label {
+            font-size: 11px !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            color: #cbd5e1 !important;
+            letter-spacing: 0.5px !important;
+            display: block !important;
+            margin-bottom: 2px !important;
+        }
+        .luxury-contact-val {
+            color: #f1f5f9 !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            line-height: 1.35 !important;
+        }
+        .luxury-contact-val a {
+            color: #f1f5f9 !important;
+            transition: color 0.2s ease !important;
+        }
+        .luxury-contact-val a:hover {
+            color: #f472b6 !important;
+        }
+
+        .luxury-social-row {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            margin-top: 22px !important;
+            padding-top: 18px !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        .luxury-social-outline-btn {
+            width: 38px !important;
+            height: 38px !important;
+            border-radius: 50% !important;
+            border: 2px solid #C21E56 !important;
+            background: transparent !important;
+            color: #ffffff !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 15px !important;
+            transition: all 0.25s ease !important;
+            text-decoration: none !important;
+        }
+        .luxury-social-outline-btn:hover {
+            background: #C21E56 !important;
+            color: #ffffff !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 4px 14px rgba(194, 30, 86, 0.45) !important;
+        }
+
+        /* Important Links List */
+        .luxury-link-list {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .luxury-link-item {
+            margin-bottom: 10px !important;
+            padding-bottom: 8px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        }
+        .luxury-link-item a {
+            color: #cbd5e1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            font-size: 13.5px !important;
+            font-weight: 500 !important;
+            transition: all 0.2s ease !important;
+            text-decoration: none !important;
+        }
+        .luxury-link-item a:hover {
+            color: #f472b6 !important;
+            padding-left: 4px !important;
+        }
+        .luxury-link-item i.link-icon {
+            font-size: 15px !important;
+            width: 24px !important;
+        }
+
+        /* Product Links 2-Column Grid */
+        .luxury-pill-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+        }
+        .luxury-pill-btn {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 8px !important;
+            padding: 9px 12px !important;
+            color: #cbd5e1 !important;
+            font-size: 12.5px !important;
+            font-weight: 600 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            transition: all 0.25s ease !important;
+            text-decoration: none !important;
+        }
+        .luxury-pill-btn:hover {
+            background: rgba(194, 30, 86, 0.18) !important;
+            border-color: #C21E56 !important;
+            color: #f472b6 !important;
+        }
+        .luxury-pill-btn-full {
+            grid-column: span 2 !important;
+        }
+
+        /* Features Bar (Bottom 4 Columns) */
+        .luxury-features-strip {
+            background: rgba(255, 255, 255, 0.02) !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 24px 0 !important;
+        }
+        .luxury-feature-item {
+            display: flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+        }
+        .luxury-feature-icon {
+            width: 44px !important;
+            height: 44px !important;
+            min-width: 44px !important;
+            border-radius: 50% !important;
+            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            color: #ffffff !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 18px !important;
+            box-shadow: 0 4px 12px rgba(194, 30, 86, 0.35) !important;
+        }
+        .luxury-feature-title {
+            color: #ffffff !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            margin-bottom: 2px !important;
+        }
+        .luxury-feature-desc {
+            color: #94a3b8 !important;
+            font-size: 12px !important;
+            margin-bottom: 0 !important;
+            line-height: 1.35 !important;
+        }
+
+        /* Bottom Bar Copyright */
+        .luxury-bottom-bar {
+            background: #040a14 !important;
+            padding: 18px 0 !important;
+            color: #64748b !important;
+            font-size: 13px !important;
+        }
+        .luxury-bottom-bar a {
+            color: #94a3b8 !important;
+            transition: color 0.2s ease !important;
+            text-decoration: none !important;
+        }
+        .luxury-bottom-bar a:hover {
+            color: #f472b6 !important;
+        }
+        .scroll-top-btn {
+            width: 36px !important;
+            height: 36px !important;
+            background: rgba(255, 255, 255, 0.06) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+            border-radius: 8px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.25s ease !important;
+            text-decoration: none !important;
+        }
+        .scroll-top-btn:hover {
+            background: #C21E56 !important;
+            border-color: #C21E56 !important;
+            color: #ffffff !important;
+        }
+    </style>
 </head>
 
 <body>
     <div class="page-wrapper">
         <header class="header home">
-            <div class="header-top bg-primary text-uppercase">
+            <!-- Top Bar: Sleek Black -->
+            <div class="header-top text-uppercase" style="background: #0f172a !important;">
                 <div class="container d-flex align-items-center justify-content-between">
                     <div class="header-left">
-                        <p class="top-message mb-0 font-weight-semibold text-white">Welcome To Kagzi Ventures!</p>
+                        <p class="top-message mb-0 font-weight-semibold text-white">
+                            <i class="fab fa-whatsapp mr-1" style="font-size: 1.1rem; color: #25D366;"></i> WhatsApp: <a href="https://wa.me/919753875213" class="text-white" target="_blank">+91 9753875213</a> 
+                            <span class="mx-2">|</span> 
+                            <i class="fa fa-envelope mr-1"></i> Email: <a href="mailto:info@kagziventures.com" class="text-white">info@kagziventures.com</a>
+                        </p>
                     </div>
 
                     <div class="header-right">
@@ -67,8 +625,8 @@ if (!isset($allCategories) || empty($allCategories)) {
                 </div>
             </div>
 
-            <!-- Main Header Middle: Logo (Left), Search (Middle), Account + Cart + USD (Right) -->
-            <div class="header-middle text-dark sticky-header">
+            <!-- Main Header Middle: Soft Light Shade Background & Logo (Left), Search (Middle), WhatsApp & Mail Enquiries (Right) -->
+            <div class="header-middle text-dark sticky-header" style="background: linear-gradient(180deg, #fff5f8 0%, #fdf2f8 100%) !important; border-bottom: none !important;">
                 <div class="container d-flex align-items-center justify-content-between">
                     <!-- Left Side: Mobile Toggle & Logo -->
                     <div class="header-left d-flex align-items-center">
@@ -103,73 +661,19 @@ if (!isset($allCategories) || empty($allCategories)) {
                         </div>
                     </div>
 
-                    <!-- Right Side: Account Icon, Cart Icon, and USD Dropdown -->
+                    <!-- Right Side: Stylish Pill WhatsApp & Mail Enquiry Buttons -->
                     <div class="header-right d-flex align-items-center">
-                        <!-- Account User Icon -->
-                        <a href="<?= base_url('account') ?>" class="header-icon header-icon-user mr-3" title="My Account">
-                            <i class="icon-user-2" style="font-size: 2rem;"></i>
+                        <a href="https://wa.me/919753875213?text=Hi%20Kagzi%20Ventures,%20I%20have%20an%20enquiry" target="_blank" class="btn btn-sm font-weight-bold mr-2 d-none d-sm-inline-flex align-items-center btn-whatsapp-stylish">
+                            <i class="fab fa-whatsapp mr-2" style="font-size: 1.15rem;"></i> WhatsApp Enquiry
                         </a>
-
-                        <!-- Cart Icon & Dropdown -->
-                        <div class="dropdown cart-dropdown mr-3">
-                            <a href="#" title="Cart" class="dropdown-toggle dropdown-arrow cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                                <i class="minicart-icon"></i>
-                                <span class="cart-count badge-circle">3</span>
-                            </a>
-                            <div class="cart-overlay"></div>
-                            <div class="dropdown-menu mobile-cart">
-                                <a href="#" title="Close (Esc)" class="btn-close">×</a>
-                                <div class="dropdownmenu-wrapper custom-scrollbar">
-                                    <div class="dropdown-cart-header">Shopping Cart</div>
-                                    <div class="dropdown-cart-products">
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="<?= base_url('shop') ?>">Ultimate 3D Bluetooth Speaker</a>
-                                                </h4>
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $99.00
-                                                </span>
-                                            </div>
-                                            <figure class="product-image-container">
-                                                <a href="<?= base_url('shop') ?>" class="product-image">
-                                                    <img src="<?= base_url('assets/images/products/product-1.jpg') ?>" alt="product" width="80" height="80">
-                                                </a>
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-cart-total">
-                                        <span>SUBTOTAL:</span>
-                                        <span class="cart-total-price float-right">$99.00</span>
-                                    </div>
-                                    <div class="dropdown-cart-action">
-                                        <a href="<?= base_url('cart') ?>" class="btn btn-gray btn-block view-cart">View Cart</a>
-                                        <a href="<?= base_url('checkout') ?>" class="btn btn-dark btn-block">Checkout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- USD Dropdown -->
-                        <div class="header-dropdown dropdown-currency">
-                            <a href="#" class="dropdown-toggle d-flex align-items-center font-weight-semibold text-uppercase text-dark" style="font-size: 13px; text-decoration: none;">
-                                USD <i class="fas fa-chevron-down ml-1" style="font-size: 10px;"></i>
-                            </a>
-                            <div class="header-menu">
-                                <ul>
-                                    <li><a href="#">USD</a></li>
-                                    <li><a href="#">EUR</a></li>
-                                    <li><a href="#">GBP</a></li>
-                                    <li><a href="#">INR</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        <a href="mailto:info@kagziventures.com?subject=Product%20Enquiry" class="btn btn-sm font-weight-bold d-none d-sm-inline-flex align-items-center btn-mail-stylish">
+                            <i class="fa fa-envelope mr-2" style="font-size: 1rem;"></i> Mail Enquiry
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Enhanced Navigation Menu Below Header -->
+            <!-- Enhanced Navigation Menu Below Header: Magenta #C21E56 Theme -->
             <style>
                 .custom-main-navbar .sf-with-ul::after,
                 .custom-main-navbar .menu a::after,
@@ -179,29 +683,29 @@ if (!isset($allCategories) || empty($allCategories)) {
                     content: none !important;
                 }
             </style>
-            <div class="header-bottom sticky-header d-none d-lg-block custom-main-navbar" style="background: #1e293b; border-bottom: 3px solid #0088cc; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" data-sticky-options="{'mobile': false}">
+            <div class="header-bottom sticky-header d-none d-lg-block custom-main-navbar" style="background: #C21E56 !important; border-bottom: 3px solid #e11d48 !important; box-shadow: 0 4px 15px rgba(194, 30, 86, 0.35);" data-sticky-options="{'mobile': false}">
                 <div class="container">
                     <nav class="main-nav w-100">
                         <ul class="menu d-flex align-items-center" style="gap: 5px;">
                             <li class="<?= (url_is('/') || current_url() == base_url()) ? 'active' : '' ?>">
-                                <a href="<?= base_url('/') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 14px; text-transform: uppercase;">
-                                    <i class="fa fa-home mr-2" style="font-size: 16px; color: #38bdf8;"></i> Home
+                                <a href="<?= base_url('/') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 15px; text-transform: uppercase;">
+                                    <i class="fa fa-home mr-2" style="font-size: 17px; color: #fef08a;"></i> Home
                                 </a>
                             </li>
                             <li class="<?= url_is('about*') ? 'active' : '' ?>">
-                                <a href="<?= base_url('about') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 14px; text-transform: uppercase;">
-                                    <i class="fa fa-info-circle mr-2" style="font-size: 16px; color: #38bdf8;"></i> About Us
+                                <a href="<?= base_url('about') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 15px; text-transform: uppercase;">
+                                    <i class="fa fa-info-circle mr-2" style="font-size: 17px; color: #fef08a;"></i> About Us
                                 </a>
                             </li>
                             <li class="<?= (url_is('shop*') && request()->getGet('sort') == 'bestseller') ? 'active' : '' ?>">
-                                <a href="<?= base_url('shop?sort=bestseller') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 14px; text-transform: uppercase;">
-                                    <i class="fa fa-fire text-warning mr-2" style="font-size: 16px;"></i> Best Sellers
+                                <a href="<?= base_url('shop?sort=bestseller') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 15px; text-transform: uppercase;">
+                                    <i class="fa fa-fire text-warning mr-2" style="font-size: 17px;"></i> Best Sellers
                                     <span class="badge badge-danger ml-2 px-2 py-1" style="font-size: 9px; border-radius: 10px; font-weight: 700;">HOT</span>
                                 </a>
                             </li>
                             <li class="<?= (url_is('shop*') && !request()->getGet('sort')) ? 'active' : '' ?>">
-                                <a href="<?= base_url('shop') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 14px; text-transform: uppercase;">
-                                    <i class="fa fa-th-large mr-2" style="font-size: 16px; color: #38bdf8;"></i> Categories
+                                <a href="<?= base_url('shop') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 15px; text-transform: uppercase;">
+                                    <i class="fa fa-th-large mr-2" style="font-size: 17px; color: #fef08a;"></i> Categories
                                     <i class="fas fa-chevron-down ml-2" style="font-size: 10px; opacity: 0.8;"></i>
                                 </a>
                                 <ul style="min-width: 220px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: none; padding: 8px 0;">
@@ -209,7 +713,7 @@ if (!isset($allCategories) || empty($allCategories)) {
                                         <?php foreach ($allCategories as $cat): ?>
                                             <li>
                                                 <a href="<?= base_url('shop?category=' . esc($cat['slug'])) ?>" class="d-flex align-items-center font-weight-medium py-2 px-4" style="color: #334155; font-size: 13px;">
-                                                    <i class="fa fa-tag text-primary mr-2" style="font-size: 12px;"></i>
+                                                    <i class="fa fa-tag text-primary mr-2" style="font-size: 12px; color: #C21E56 !important;"></i>
                                                     <?= esc($cat['name']) ?>
                                                 </a>
                                             </li>
@@ -218,8 +722,8 @@ if (!isset($allCategories) || empty($allCategories)) {
                                 </ul>
                             </li>
                             <li class="<?= url_is('contact*') ? 'active' : '' ?>">
-                                <a href="<?= base_url('contact') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 14px; text-transform: uppercase;">
-                                    <i class="fa fa-envelope mr-2" style="font-size: 16px; color: #38bdf8;"></i> Contact Us
+                                <a href="<?= base_url('contact') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 15px; text-transform: uppercase;">
+                                    <i class="fa fa-envelope mr-2" style="font-size: 17px; color: #fef08a;"></i> Contact Us
                                 </a>
                             </li>
                         </ul>
@@ -231,78 +735,197 @@ if (!isset($allCategories) || empty($allCategories)) {
         <!-- Main Content Section -->
         <?= $this->renderSection('content') ?>
 
-        <footer class="footer bg-dark position-relative">
-            <div class="footer-middle">
-                <div class="container position-static">
-                    <div class="footer-ribbon">Get in touch</div>
+        <!-- CUSTOM LUXURY DARK NAVY FOOTER (EXACT MATCH TO USER SCREENSHOT) -->
+        <footer class="luxury-footer">
+            <div class="luxury-footer-ribbon">
+                <i class="fa fa-paper-plane"></i> Let's Connect
+            </div>
 
+            <div class="container position-relative">
+                <div class="luxury-footer-main">
                     <div class="row">
-                        <div class="col-lg-3 col-sm-6 pb-2 pb-sm-0">
-                            <div class="widget">
-                                <h4 class="widget-title">About Us</h4>
+                        <!-- Column 1: ABOUT US -->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 luxury-footer-col">
+                            <h4 class="luxury-footer-heading">ABOUT US</h4>
+                            <div class="luxury-logo-card">
                                 <a href="<?= base_url('/') ?>">
-                                    <img src="<?= base_url('assets/images/logo-kagzi.jpeg') ?>" alt="Kagzi Ventures Logo" style="height: 44px; width: auto; border-radius: 4px;" class="logo-footer mb-3">
+                                    <img src="<?= base_url('assets/images/logo-kagzi.jpeg') ?>" alt="Kagzi Ventures Logo">
                                 </a>
-                                <p class="m-b-4">At Kagzi Ventures, we believe everyday products should be practical, reliable, thoughtfully designed, and easy to use. Storage solutions, pouches, hampers, and utility products for your everyday needs.</p>
-                                <a href="<?= base_url('about') ?>" class="read-more text-white">read more...</a>
+                            </div>
+                            <p class="luxury-footer-text">
+                                At Kagzi Ventures, we build practical, high-quality storage solutions, organizers, pouches, and utility products that help keep your home and lifestyle clutter-free.
+                            </p>
+                            <p class="luxury-footer-text mb-3">
+                                Our mission is to deliver innovative, reliable, and thoughtful products that make everyday storage effortless.
+                            </p>
+                            <a href="<?= base_url('about') ?>" class="btn-footer-readmore">
+                                Read More <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- Column 2: CONTACT INFO -->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 luxury-footer-col">
+                            <h4 class="luxury-footer-heading">CONTACT INFO</h4>
+                            
+                            <div class="luxury-contact-item">
+                                <div class="luxury-contact-icon">
+                                    <i class="fa fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <span class="luxury-contact-label">ADDRESS</span>
+                                    <span class="luxury-contact-val">822 Flat No.7 Khatiwala Tank, Indore, MP 452014, India</span>
+                                </div>
+                            </div>
+
+                            <div class="luxury-contact-item">
+                                <div class="luxury-contact-icon">
+                                    <i class="fa fa-phone font-weight-bold"></i>
+                                </div>
+                                <div>
+                                    <span class="luxury-contact-label">PHONE</span>
+                                    <span class="luxury-contact-val"><a href="tel:+919753875213">+91 9753875213</a></span>
+                                </div>
+                            </div>
+
+                            <div class="luxury-contact-item mb-0">
+                                <div class="luxury-contact-icon">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="luxury-contact-label">EMAIL</span>
+                                    <span class="luxury-contact-val"><a href="mailto:info@kagziventures.com">info@kagziventures.com</a></span>
+                                </div>
+                            </div>
+
+                            <div class="luxury-social-row">
+                                <a href="#" class="luxury-social-outline-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="luxury-social-outline-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/919753875213" target="_blank" class="luxury-social-outline-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-sm-6 pb-4 pb-sm-0">
-                            <div class="widget mb-2">
-                                <h4 class="widget-title mb-1 pb-1">Contact Info</h4>
-                                <ul class="contact-info m-b-4">
-                                    <li>
-                                        <span class="contact-info-label">Address:</span>822 Flat No.7 Khatiwala Tank Indore 452014
-                                    </li>
-                                    <li>
-                                        <span class="contact-info-label">Phone:</span><a href="tel:9753875213">9753875213</a>
-                                    </li>
-                                    <li>
-                                        <span class="contact-info-label">Email:</span> <a href="mailto:info@kagziventures.com">info@kagziventures.com</a>
-                                    </li>
-                                    <li>
-                                        <span class="contact-info-label">Working Days/Hours:</span> Mon - Sun / 9:00 AM - 8:00 PM
-                                    </li>
-                                </ul>
-                                <div class="social-icons">
-                                    <a href="#" class="social-icon social-facebook icon-facebook" target="_blank" title="Facebook"></a>
-                                    <a href="#" class="social-icon social-twitter icon-twitter" target="_blank" title="Twitter"></a>
-                                    <a href="#" class="social-icon social-linkedin fab fa-linkedin-in" target="_blank" title="Linkedin"></a>
+                        <!-- Column 3: IMPORTANT LINKS -->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 luxury-footer-col">
+                            <h4 class="luxury-footer-heading">IMPORTANT LINKS</h4>
+                            <ul class="luxury-link-list">
+                                <li class="luxury-link-item">
+                                    <a href="<?= base_url('/') ?>">
+                                        <span><i class="fa fa-home text-success link-icon"></i> Home</span>
+                                        <i class="fa fa-chevron-right text-muted small"></i>
+                                    </a>
+                                </li>
+                                <li class="luxury-link-item">
+                                    <a href="<?= base_url('shop') ?>">
+                                        <span><i class="fa fa-th-large text-danger link-icon"></i> Shop Categories</span>
+                                        <i class="fa fa-chevron-right text-muted small"></i>
+                                    </a>
+                                </li>
+                                <li class="luxury-link-item">
+                                    <a href="<?= base_url('shop?sort=featured') ?>">
+                                        <span><i class="fa fa-briefcase text-warning link-icon"></i> Featured Products</span>
+                                        <i class="fa fa-chevron-right text-muted small"></i>
+                                    </a>
+                                </li>
+                                <li class="luxury-link-item">
+                                    <a href="<?= base_url('about') ?>">
+                                        <span><i class="fa fa-info-circle text-info link-icon"></i> About Us</span>
+                                        <i class="fa fa-chevron-right text-muted small"></i>
+                                    </a>
+                                </li>
+                                <li class="luxury-link-item">
+                                    <a href="<?= base_url('contact') ?>">
+                                        <span><i class="fa fa-phone link-icon" style="color: #a855f7;"></i> Contact Us</span>
+                                        <i class="fa fa-chevron-right text-muted small"></i>
+                                    </a>
+                                </li>
+                                <li class="luxury-link-item mb-0 border-0">
+                                    <a href="https://wa.me/919753875213?text=Hi%20Kagzi%20Ventures,%20I%20want%20to%20place%20a%20bulk%20order" target="_blank">
+                                        <span><i class="fa fa-edit link-icon" style="color: #06b6d4;"></i> Bulk Enquiry</span>
+                                        <i class="fa fa-chevron-right text-muted small"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 4: PRODUCT LINKS -->
+                        <div class="col-lg-3 col-md-6 luxury-footer-col">
+                            <h4 class="luxury-footer-heading">PRODUCT LINKS</h4>
+                            <div class="luxury-pill-grid">
+                                <a href="<?= base_url('shop?q=storage') ?>" class="luxury-pill-btn">
+                                    <span>Storage Bags</span> <i class="fa fa-chevron-right text-muted small"></i>
+                                </a>
+                                <a href="<?= base_url('shop?q=organizer') ?>" class="luxury-pill-btn">
+                                    <span>Organizers</span> <i class="fa fa-chevron-right text-muted small"></i>
+                                </a>
+                                <a href="<?= base_url('shop?q=pouches') ?>" class="luxury-pill-btn">
+                                    <span>Pouches</span> <i class="fa fa-chevron-right text-muted small"></i>
+                                </a>
+                                <a href="<?= base_url('shop?q=hampers') ?>" class="luxury-pill-btn">
+                                    <span>Hampers</span> <i class="fa fa-chevron-right text-muted small"></i>
+                                </a>
+                                <a href="<?= base_url('shop?q=utility') ?>" class="luxury-pill-btn">
+                                    <span>Utility Bags</span> <i class="fa fa-chevron-right text-muted small"></i>
+                                </a>
+                                <a href="<?= base_url('shop?q=gifting') ?>" class="luxury-pill-btn">
+                                    <span>Gifting</span> <i class="fa fa-chevron-right text-muted small"></i>
+                                </a>
+                                <a href="<?= base_url('shop') ?>" class="luxury-pill-btn luxury-pill-btn-full mt-1">
+                                    <span>Popular Storage Solutions</span> <i class="fa fa-chevron-right text-muted small"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Feature Highlights Strip (4 Columns) -->
+            <div class="luxury-features-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-6 mb-3 mb-md-0">
+                            <div class="luxury-feature-item">
+                                <div class="luxury-feature-icon">
+                                    <i class="fa fa-shield-alt"></i>
+                                </div>
+                                <div>
+                                    <h6 class="luxury-feature-title">Secure &amp; Reliable</h6>
+                                    <p class="luxury-feature-desc">We build durable, trusted everyday products</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-sm-6 pb-2 pb-sm-0">
-                            <div class="widget">
-                                <h4 class="widget-title pb-1">Customer Service</h4>
-                                <ul class="links">
-                                    <li><a href="#">Help & FAQs</a></li>
-                                    <li><a href="#">Order Tracking</a></li>
-                                    <li><a href="#">Shipping & Delivery</a></li>
-                                    <li><a href="#">Orders History</a></li>
-                                    <li><a href="#">Advanced Search</a></li>
-                                    <li><a href="<?= base_url('account') ?>">My Account</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="<?= base_url('about') ?>">About Us</a></li>
-                                    <li><a href="#">Corporate Sales</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                </ul>
+                        <div class="col-md-3 col-6 mb-3 mb-md-0">
+                            <div class="luxury-feature-item">
+                                <div class="luxury-feature-icon">
+                                    <i class="fa fa-rocket"></i>
+                                </div>
+                                <div>
+                                    <h6 class="luxury-feature-title">Innovative Solutions</h6>
+                                    <p class="luxury-feature-desc">Delivering modern utility designs for your home</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-sm-6 pb-0">
-                            <div class="widget mb-1 mb-sm-3">
-                                <h4 class="widget-title">Product Tags</h4>
-                                <div class="tagcloud">
-                                    <a href="<?= base_url('shop?q=bags') ?>">Bags</a>
-                                    <a href="<?= base_url('shop?q=storage') ?>">Storage</a>
-                                    <a href="<?= base_url('shop?q=pouches') ?>">Pouches</a>
-                                    <a href="<?= base_url('shop?q=organizers') ?>">Organizers</a>
-                                    <a href="<?= base_url('shop?category=accessories') ?>">Accessories</a>
-                                    <a href="<?= base_url('shop?q=travelling') ?>">Travelling</a>
-                                    <a href="<?= base_url('shop?q=lifestyle') ?>">LifeStyle</a>
-                                    <a href="<?= base_url('shop?q=storage') ?>">Storage Solution</a>
+                        <div class="col-md-3 col-6">
+                            <div class="luxury-feature-item">
+                                <div class="luxury-feature-icon">
+                                    <i class="fa fa-headset"></i>
+                                </div>
+                                <div>
+                                    <h6 class="luxury-feature-title">Quick Support</h6>
+                                    <p class="luxury-feature-desc">We're here to assist you anytime</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-6">
+                            <div class="luxury-feature-item">
+                                <div class="luxury-feature-icon">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <div>
+                                    <h6 class="luxury-feature-title">Customer Focused</h6>
+                                    <p class="luxury-feature-desc">Your satisfaction is our top priority</p>
                                 </div>
                             </div>
                         </div>
@@ -310,19 +933,19 @@ if (!isset($allCategories) || empty($allCategories)) {
                 </div>
             </div>
 
-            <div class="container">
-                <div class="footer-bottom d-sm-flex align-items-center">
-                    <div class="footer-left">
-                        <span class="footer-copyright">© Kagzi Ventures. 2026. All Rights Reserved</span>
+            <!-- Bottom Copyright Bar -->
+            <div class="luxury-bottom-bar">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap">
+                    <div>
+                        © <?= date('Y') ?> Kagzi Ventures. All Rights Reserved.
                     </div>
-
-                    <div class="footer-right ml-auto mt-1 mt-sm-0">
-                        <div class="payment-icons">
-                            <span class="payment-icon visa" style="background-image: url(<?= base_url('assets/images/payments/payment-visa.svg') ?>)"></span>
-                            <span class="payment-icon paypal" style="background-image: url(<?= base_url('assets/images/payments/payment-paypal.svg') ?>)"></span>
-                            <span class="payment-icon stripe" style="background-image: url(<?= base_url('assets/images/payments/payment-stripe.png') ?>)"></span>
-                            <span class="payment-icon verisign" style="background-image: url(<?= base_url('assets/images/payments/payment-verisign.svg') ?>)"></span>
-                        </div>
+                    <div class="d-flex align-items-center gap-3 mt-2 mt-sm-0">
+                        <a href="<?= base_url('contact') ?>" class="mr-3">Privacy Policy</a>
+                        <span class="text-muted mr-3">|</span>
+                        <a href="<?= base_url('contact') ?>" class="mr-3">Terms of Use</a>
+                        <a href="#top" class="scroll-top-btn ml-2" title="Back to top">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -361,11 +984,9 @@ if (!isset($allCategories) || empty($allCategories)) {
                 </ul>
 
                 <ul class="mobile-menu">
-                    <li><a href="<?= base_url('account') ?>">My Account</a></li>
+                    <li><a href="https://wa.me/919753875213?text=Hi%20Kagzi%20Ventures,%20I%20have%20an%20enquiry" target="_blank" class="text-success font-weight-bold"><i class="fab fa-whatsapp mr-2"></i>WhatsApp Enquiry</a></li>
+                    <li><a href="mailto:info@kagziventures.com?subject=Product%20Enquiry" class="text-primary font-weight-bold"><i class="fa fa-envelope mr-2"></i>Email Enquiry</a></li>
                     <li><a href="<?= base_url('contact') ?>">Contact Us</a></li>
-                    <li><a href="<?= base_url('wishlist') ?>">My Wishlist</a></li>
-                    <li><a href="<?= base_url('cart') ?>">Cart</a></li>
-                    <li><a href="<?= base_url('login') ?>" class="login-link">Log In</a></li>
                 </ul>
             </nav>
 
@@ -394,45 +1015,15 @@ if (!isset($allCategories) || empty($allCategories)) {
             </a>
         </div>
         <div class="sticky-info">
-            <a href="<?= base_url('wishlist') ?>">
-                <i class="icon-wishlist-2"></i>Wishlist
+            <a href="https://wa.me/919753875213?text=Hi%20Kagzi%20Ventures,%20I%20have%20an%20enquiry" target="_blank">
+                <i class="fab fa-whatsapp text-success"></i>WhatsApp
             </a>
         </div>
         <div class="sticky-info">
-            <a href="<?= base_url('login') ?>">
-                <i class="icon-user-2"></i>Account
+            <a href="<?= base_url('contact') ?>">
+                <i class="icon-envelope"></i>Contact
             </a>
         </div>
-    </div>
-
-    <div class="newsletter-popup mfp-hide bg-img" id="newsletter-popup-form" style="background: #f1f1f1 no-repeat center/cover url(<?= base_url('assets/images/newsletter_popup_bg.jpg') ?>)">
-        <div class="newsletter-popup-content">
-            <img src="<?= base_url('assets/images/logo.png') ?>" width="111" height="44" alt="Logo" class="logo-newsletter">
-            <h2>Subscribe to newsletter</h2>
-
-            <p>
-                Subscribe to the Porto mailing list to receive updates on new arrivals, special offers and our promotions.
-            </p>
-
-            <form action="#">
-                <div class="input-group">
-                    <input type="email" class="form-control" id="newsletter-email" name="newsletter-email" placeholder="Your email address" required />
-                    <input type="submit" class="btn btn-primary" value="Submit" />
-                </div>
-            </form>
-            <div class="newsletter-subscribe">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" value="0" id="show-again" />
-                    <label for="show-again" class="custom-control-label">
-                        Don't show this popup again
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <button title="Close (Esc)" type="button" class="mfp-close">
-            ×
-        </button>
     </div>
 
     <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
@@ -447,5 +1038,31 @@ if (!isset($allCategories) || empty($allCategories)) {
 
     <!-- Main JS File -->
     <script src="<?= base_url('assets/js/main.min.js') ?>"></script>
+    <script>
+        if (typeof jQuery !== 'undefined') {
+            jQuery(document).ready(function($) {
+                if ($.magnificPopup) {
+                    $.magnificPopup.close();
+                }
+
+                // Force Quick View button to navigate directly to the Product Detail page
+                $(document).on('click', '.btn-quickview, a.btn-quickview', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var href = $(this).attr('href');
+                    if (href && href !== '#' && href !== 'javascript:void(0);') {
+                        window.location.href = href;
+                    } else {
+                        var cardLink = $(this).closest('.product-default').find('a[href*="/product/"]').first().attr('href');
+                        if (cardLink) {
+                            window.location.href = cardLink;
+                        } else {
+                            window.location.href = '<?= base_url("shop") ?>';
+                        }
+                    }
+                });
+            });
+        }
+    </script>
 </body>
 </html>

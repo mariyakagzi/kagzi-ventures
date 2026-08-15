@@ -171,6 +171,11 @@ class CreateEcommerceTables extends Migration
                 'type' => 'TEXT', // JSON array of extra images
                 'null' => true,
             ],
+            'video' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+                'null'       => true,
+            ],
             'featured' => [
                 'type'       => 'TINYINT',
                 'constraint' => 1,

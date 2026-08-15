@@ -17,32 +17,6 @@
 
         <div class="row">
             <div class="col-lg-9 mb-1">
-                <!-- Category Banner Slider -->
-                <div class="home-slider category-home-slider owl-carousel owl-theme mb-2">
-                    <div class="home-slide home-slide1 banner banner-md-vw banner-sm-vw d-flex align-items-center">
-                        <img class="slide-bg" style="background-color: #71b5da;" src="<?= base_url('assets/images/demoes/demo1/banners/banner-1.jpg') ?>" width="880" height="280" alt="category-banner">
-                        <div class="banner-layer">
-                            <h4 class="text-white mb-0">Find the Boundaries. Push Through!</h4>
-                            <h2 class="text-white mb-0">Summer Sale</h2>
-                            <h3 class="text-white text-uppercase m-b-3">30% Off</h3>
-                            <h5 class="text-white text-uppercase d-inline-block mb-0 ls-n-20 align-text-bottom">
-                                Starting At <b class="coupon-sale-text bg-white text-secondary d-inline-block">$<em class="align-text-top">199</em>99</b>
-                            </h5>
-                            <a href="<?= base_url('shop') ?>" class="btn btn-dark btn-md">GET YOURS!</a>
-                        </div>
-                    </div>
-
-                    <div class="home-slide home-slide2 banner banner-md-vw banner-sm-vw d-flex align-items-center">
-                        <img class="slide-bg" src="<?= base_url('assets/images/demoes/demo1/banners/banner-2.jpg') ?>" width="880" height="280" alt="category-banner">
-                        <div class="banner-layer text-uppercase">
-                            <h4 class="m-b-2">Over 200 products with discounts</h4>
-                            <h2 class="m-b-3">Great Deals</h2>
-                            <h5 class="d-inline-block mb-0 align-top mr-3 mb-2">Starting At <b>$<em>299</em>99</b></h5>
-                            <a href="<?= base_url('shop') ?>" class="btn btn-dark btn-md">Get Yours!</a>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Catalog Toolbox (Sort & Search) -->
                 <nav class="toolbox sticky-header mb-3" data-sticky-options="{'mobile': true}">
                     <div class="toolbox-left">
@@ -93,9 +67,6 @@
                                                 <div class="product-label label-sale">SALE</div>
                                             </div>
                                         <?php endif; ?>
-                                        <div class="btn-icon-group">
-                                            <a href="<?= base_url('product/' . $prod['slug']) ?>" class="btn-icon btn-add-cart"><i class="fa fa-arrow-right"></i></a>
-                                        </div>
                                         <a href="<?= base_url('product/' . $prod['slug']) ?>" class="btn-quickview" title="Quick View">Quick View</a>
                                     </figure>
                                     <div class="product-details text-center">
@@ -119,11 +90,16 @@
 
                                         <div class="price-box my-2">
                                             <?php if (!empty($prod['sale_price'])): ?>
-                                                <span class="old-price mr-2" style="text-decoration: line-through;">$<?= number_format($prod['price'], 2) ?></span>
-                                                <span class="product-price text-primary font-weight-bold">$<?= number_format($prod['sale_price'], 2) ?></span>
+                                                <span class="old-price mr-2" style="text-decoration: line-through;">₹<?= number_format($prod['price'], 2) ?></span>
+                                                <span class="product-price text-primary font-weight-bold">₹<?= number_format($prod['sale_price'], 2) ?></span>
                                             <?php else: ?>
-                                                <span class="product-price text-dark font-weight-bold">$<?= number_format($prod['price'], 2) ?></span>
+                                                <span class="product-price text-dark font-weight-bold">₹<?= number_format($prod['price'], 2) ?></span>
                                             <?php endif; ?>
+                                        </div>
+                                        <div class="mt-2">
+                                            <a href="https://wa.me/919753875213?text=<?= rawurlencode('Hi Kagzi Ventures, I would like to enquire about: ' . $prod['name']) ?>" target="_blank" class="btn btn-sm btn-success w-100 font-weight-bold d-flex align-items-center justify-content-center" style="background-color: #25D366; border-color: #25D366; padding: 6px 10px; font-size: 0.85rem;">
+                                                <i class="fab fa-whatsapp mr-1" style="font-size: 1.1rem;"></i> WhatsApp Enquiry
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +194,7 @@
                                                     <a href="<?= base_url('product/' . $fp['slug']) ?>"><?= esc($fp['name']) ?></a>
                                                 </h3>
                                                 <div class="price-box">
-                                                    <span class="product-price">$<?= number_format($fp['sale_price'] ?? $fp['price'], 2) ?></span>
+                                                    <span class="product-price">₹<?= number_format($fp['sale_price'] ?? $fp['price'], 2) ?></span>
                                                 </div>
                                             </div>
                                         </div>

@@ -25,6 +25,12 @@ class App extends BaseConfig
     public string $baseURL = 'http://localhost/kagzi-ventures-complete/public/';
 
     /**
+     * AI API Key for Content Generation (OpenRouter / Gemini)
+     */
+    public string $geminiApiKey = '';
+    public string $aiModelName = 'qwen/qwen3-coder';
+
+    /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
      * If you want to accept multiple Hostnames, set this.
      *
