@@ -1,0 +1,167 @@
+<?php
+
+namespace App\Controllers\Admin;
+
+use App\Models\ProductModel;
+use App\Models\CategoryModel;
+
+class Products extends BaseAdminController
+{
+    public function index()
+    {
+        $productModel = new ProductModel();
+        $products     = $productModel->select('products.*, categories.name as category_name')
+                                     ->join('categories', 'categories.id = products.category_id', 'left')
+                                     ->orderBy('products.id', 'DESC')
+                                     ->findAll();
+
+        $data = [
+            'title'    => 'Manage Products - Kagzi Ventures Admin',
+            'products' => $products,
+        ];
+
+        return view('admin/products/index', $data);
+    }
+
+    public function create()
+    {
+        $categoryModel = new CategoryModel();
+        $categories    = $categoryModel->orderBy('name', 'ASC')->findAll();
+
+        $data = [
+            'title'      => 'Add New Product - Kagzi Ventures Admin',
+            'categories' => $categories,
+        ];
+
+        return view('admin/products/create', $data);
+    }
+
+    public function store()
+    {
+        $productModel = new ProductModel();
+
+        $name = trim($this->request->getPost('name'));
+        $slug = url_title($name, '-', true);
+
+        // Ensure unique slug
+        $existing = $productModel->where('slug', $slug)->first();
+        if ($existing) {
+            $slug .= '-' . time();
+        }
+
+        $mainImagePath = 'assets/images/products/product-1.jpg'; // default fallback
+        $file = $this->request->getFile('main_image');
+
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $file->move(FCPATH . 'uploads/products/', $newName);
+            $mainImagePath = 'uploads/products/' . $newName;
+        }
+
+        $data = [
+            'name'              => $name,
+            'slug'              => $slug,
+            'category_id'       => (int)$this->request->getPost('category_id'),
+            'sku'               => trim($this->request->getPost('sku')),
+            'price'             => (float)$this->request->getPost('price'),
+            'sale_price'        => $this->request->getPost('sale_price') ? (float)$this->request->getPost('sale_price') : null,
+            'stock_quantity'    => (int)$this->request->getPost('stock_quantity'),
+            'short_description' => trim($this->request->getPost('short_description')),
+            'features'          => trim($this->request->getPost('features')),
+            'specifications'    => trim($this->request->getPost('specifications')),
+            'description'       => trim($this->request->getPost('description')),
+            'main_image'        => $mainImagePath,
+            'featured'          => $this->request->getPost('featured') ? 1 : 0,
+            'is_trending'       => $this->request->getPost('is_trending') ? 1 : 0,
+            'status'            => $this->request->getPost('status') ? 1 : 0,
+        ];
+
+        $productModel->insert($data);
+
+        return redirect()->to(base_url('admin/products'))->with('success', 'Product "' . esc($name) . '" created successfully!');
+    }
+
+    public function edit(int $id)
+    {
+        $productModel  = new ProductModel();
+        $categoryModel = new CategoryModel();
+
+        $product = $productModel->find($id);
+        if (!$product) {
+            return redirect()->to(base_url('admin/products'))->with('error', 'Product not found.');
+        }
+
+        $categories = $categoryModel->orderBy('name', 'ASC')->findAll();
+
+        $data = [
+            'title'      => 'Edit Product - ' . esc($product['name']),
+            'product'    => $product,
+            'categories' => $categories,
+        ];
+
+        return view('admin/products/edit', $data);
+    }
+
+    public function update(int $id)
+    {
+        $productModel = new ProductModel();
+
+        $product = $productModel->find($id);
+        if (!$product) {
+            return redirect()->to(base_url('admin/products'))->with('error', 'Product not found.');
+        }
+
+        $name = trim($this->request->getPost('name'));
+        $slug = url_title($name, '-', true);
+
+        // Ensure unique slug except current
+        $existing = $productModel->where('slug', $slug)->where('id !=', $id)->first();
+        if ($existing) {
+            $slug .= '-' . time();
+        }
+
+        $mainImagePath = $product['main_image'];
+        $file = $this->request->getFile('main_image');
+
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $file->move(FCPATH . 'uploads/products/', $newName);
+            $mainImagePath = 'uploads/products/' . $newName;
+        }
+
+        $updateData = [
+            'name'              => $name,
+            'slug'              => $slug,
+            'category_id'       => (int)$this->request->getPost('category_id'),
+            'sku'               => trim($this->request->getPost('sku')),
+            'price'             => (float)$this->request->getPost('price'),
+            'sale_price'        => $this->request->getPost('sale_price') ? (float)$this->request->getPost('sale_price') : null,
+            'stock_quantity'    => (int)$this->request->getPost('stock_quantity'),
+            'short_description' => trim($this->request->getPost('short_description')),
+            'features'          => trim($this->request->getPost('features')),
+            'specifications'    => trim($this->request->getPost('specifications')),
+            'description'       => trim($this->request->getPost('description')),
+            'main_image'        => $mainImagePath,
+            'featured'          => $this->request->getPost('featured') ? 1 : 0,
+            'is_trending'       => $this->request->getPost('is_trending') ? 1 : 0,
+            'status'            => $this->request->getPost('status') ? 1 : 0,
+        ];
+
+        $productModel->update($id, $updateData);
+
+        return redirect()->to(base_url('admin/products'))->with('success', 'Product "' . esc($name) . '" updated successfully!');
+    }
+
+    public function delete(int $id)
+    {
+        $productModel = new ProductModel();
+        $product      = $productModel->find($id);
+
+        if ($product) {
+            $productModel->delete($id);
+            return redirect()->to(base_url('admin/products'))->with('success', 'Product deleted successfully!');
+        }
+
+        return redirect()->to(base_url('admin/products'))->with('error', 'Product not found.');
+    }
+}
