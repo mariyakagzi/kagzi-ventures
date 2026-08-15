@@ -176,6 +176,11 @@ class CreateEcommerceTables extends Migration
                 'constraint' => 1,
                 'default'    => 0,
             ],
+            'is_trending' => [
+                'type'       => 'TINYINT',
+                'constraint' => 1,
+                'default'    => 0,
+            ],
             'status' => [
                 'type'       => 'TINYINT',
                 'constraint' => 1,
