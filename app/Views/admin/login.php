@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - Kagzi Ventures</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css') ?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
     <style>
         body {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -13,7 +15,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Albert Sans', sans-serif;
+            font-weight: 300;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Urbanist', sans-serif !important;
+            font-weight: 700;
         }
         .login-card {
             background: #ffffff;
@@ -32,16 +39,20 @@
             border-radius: 6px;
         }
         .btn-admin {
-            background: #0088cc;
-            border-color: #0088cc;
+            background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%);
+            border-color: #1D5EB8;
             color: #ffffff;
             font-weight: 600;
             padding: 10px;
             border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(29, 94, 184, 0.3);
+            transition: all 0.25s ease;
         }
         .btn-admin:hover {
-            background: #0077b3;
+            background: #154890;
+            border-color: #154890;
             color: #ffffff;
+            box-shadow: 0 6px 18px rgba(29, 94, 184, 0.45);
         }
     </style>
 </head>

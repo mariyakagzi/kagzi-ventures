@@ -1,0 +1,352 @@
+/* ==========================================================================
+   Kagzi Ventures - Material Design 3 (MUI) Custom Style System
+   Brand Colors: Royal Blue (#1D5EB8) & Champagne Gold (#C5A059)
+   Typography: Urbanist (Headings) & Albert Sans (Body)
+   ========================================================================== */
+
+:root {
+    --mui-primary: #1D5EB8;
+    --mui-primary-dark: #154890;
+    --mui-primary-deep: #0F346C;
+    --mui-primary-light: #EFF6FF;
+    --mui-secondary-gold: #C5A059;
+    --mui-secondary-gold-dark: #A6823B;
+    --mui-gold-accent: #D4AF37;
+    --mui-surface: #FFFFFF;
+    --mui-background: #F8FAFC;
+    --mui-text-primary: #0F172A;
+    --mui-text-secondary: #334155;
+    --mui-text-muted: #64748B;
+    --mui-border: #E2E8F0;
+    --mui-border-light: #F1F5F9;
+    --mui-radius-sm: 8px;
+    --mui-radius-md: 12px;
+    --mui-radius-lg: 16px;
+    --mui-radius-pill: 30px;
+    --mui-elevation-1: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --mui-elevation-2: 0 4px 20px rgba(29, 94, 184, 0.06);
+    --mui-elevation-3: 0 10px 30px rgba(29, 94, 184, 0.12);
+    --mui-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================
+   1. Material UI Typography System
+   ========================================== */
+html {
+    font-size: 14px !important;
+}
+
+body {
+    font-size: 14px !important;
+    font-family: 'Albert Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--mui-text-secondary);
+    background-color: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.mui-heading-1, .mui-heading-2, .mui-heading-3, .mui-heading-4,
+.product-title, .product-title a,
+.subtitle, .title, .widget-title,
+.luxury-footer-heading,
+.featured-products-heading,
+.luxury-feature-title,
+.usp-feature-title,
+.category-card-name,
+.menu > li > a,
+.page-title {
+    font-family: 'Urbanist', sans-serif !important;
+    font-weight: 800;
+    color: var(--mui-text-primary);
+}
+
+/* Base Paragraphs & Text */
+p, li, td, th, label, .form-control {
+    font-size: 14px;
+}
+
+/* ==========================================
+   2. Material UI Cards & Surfaces
+   ========================================== */
+.mui-card {
+    background: var(--mui-surface);
+    border: 1px solid var(--mui-border);
+    border-radius: var(--mui-radius-md);
+    box-shadow: var(--mui-elevation-1);
+    transition: var(--mui-transition);
+}
+
+.mui-card:hover {
+    border-color: #BFDBFE;
+    box-shadow: var(--mui-elevation-3);
+    transform: translateY(-4px);
+}
+
+.mui-card-sm {
+    border-radius: var(--mui-radius-sm);
+    padding: 14px 16px;
+}
+
+.mui-card-surface {
+    background: var(--mui-surface);
+    border: 1px solid var(--mui-border);
+    border-radius: var(--mui-radius-lg);
+    box-shadow: var(--mui-elevation-2);
+    transition: var(--mui-transition);
+}
+
+.mui-card-surface:hover {
+    box-shadow: var(--mui-elevation-3);
+    transform: translateY(-3px);
+}
+
+.mui-card-glass {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FA 100%);
+    border: 2px solid #DBEAFE;
+    border-radius: var(--mui-radius-lg);
+    box-shadow: var(--mui-elevation-2);
+}
+
+.mui-card-hero {
+    background: linear-gradient(135deg, var(--mui-primary) 0%, var(--mui-primary-dark) 100%);
+    color: #FFFFFF;
+    border-radius: var(--mui-radius-lg);
+    border-bottom: 4px solid var(--mui-secondary-gold);
+    box-shadow: 0 12px 35px rgba(29, 94, 184, 0.25);
+}
+
+/* ==========================================
+   3. Material UI Chips & Badges
+   ========================================== */
+.mui-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 14px;
+    border-radius: var(--mui-radius-pill);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: var(--mui-transition);
+}
+
+.mui-chip-primary {
+    background: linear-gradient(135deg, var(--mui-primary) 0%, var(--mui-primary-dark) 100%);
+    color: #FFFFFF;
+    border: 1px solid var(--mui-secondary-gold);
+    box-shadow: 0 2px 8px rgba(29, 94, 184, 0.25);
+}
+
+.mui-chip-gold {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    color: #92400E;
+    border: 1px solid #F59E0B;
+}
+
+.mui-chip-green {
+    background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+    color: #065F46;
+    border: 1px solid #10B981;
+}
+
+/* ==========================================
+   4. Material UI Icon Badges
+   ========================================== */
+.mui-icon-badge {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--mui-primary) 0%, var(--mui-primary-dark) 100%);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(29, 94, 184, 0.25);
+}
+
+.mui-icon-badge-sm {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--mui-primary) 0%, var(--mui-primary-dark) 100%);
+    color: #FFFFFF;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(29, 94, 184, 0.2);
+}
+
+.mui-icon-badge-green {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.25);
+}
+
+/* ==========================================
+   5. Product Detail Features Box & Tabs
+   ========================================== */
+.mui-features-box {
+    background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+    border-left: 5px solid var(--mui-primary) !important;
+    border: 1px solid #DBEAFE;
+    border-radius: var(--mui-radius-md);
+    box-shadow: var(--mui-elevation-2);
+    padding: 24px;
+}
+
+.mui-features-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(219, 234, 254, 0.8);
+}
+
+.mui-features-title {
+    font-family: 'Urbanist', sans-serif !important;
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    color: var(--mui-text-primary) !important;
+    letter-spacing: 0.6px;
+    margin-bottom: 0;
+}
+
+.mui-feature-item {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(219, 234, 254, 0.95);
+    border-radius: var(--mui-radius-sm);
+    padding: 12px 16px;
+    transition: var(--mui-transition);
+    display: flex;
+    align-items: flex-start;
+}
+
+.mui-feature-item:hover {
+    background: #FFFFFF;
+    border-color: #BFDBFE;
+    box-shadow: 0 4px 12px rgba(29, 94, 184, 0.08);
+}
+
+/* Material UI Tabs Navigation */
+.mui-nav-tabs {
+    border-bottom: 3px solid #BFDBFE !important;
+    gap: 6px;
+}
+
+.mui-nav-tabs .nav-link {
+    font-family: 'Urbanist', sans-serif !important;
+    font-size: 1.12rem !important;
+    font-weight: 800 !important;
+    color: #475569 !important;
+    padding: 14px 26px !important;
+    border-radius: 12px 12px 0 0 !important;
+    border: 1px solid #E2E8F0 !important;
+    border-bottom: none !important;
+    background: #F8FAFC !important;
+    transition: var(--mui-transition) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.mui-nav-tabs .nav-link.active {
+    color: #FFFFFF !important;
+    background: linear-gradient(135deg, var(--mui-primary) 0%, var(--mui-primary-dark) 100%) !important;
+    border-color: var(--mui-primary) !important;
+    box-shadow: 0 -4px 18px rgba(29, 94, 184, 0.25) !important;
+}
+
+.mui-nav-tabs .nav-link:hover:not(.active) {
+    color: var(--mui-primary) !important;
+    background: #EFF6FF !important;
+}
+
+.mui-tab-content {
+    border: 1px solid #DBEAFE !important;
+    border-top: none !important;
+    border-radius: 0 0 14px 14px !important;
+    box-shadow: 0 8px 30px rgba(29, 94, 184, 0.05) !important;
+    padding: 32px !important;
+    background: #FFFFFF !important;
+}
+
+/* Description Parser Headers & Cards */
+.mui-desc-main-title {
+    font-family: 'Urbanist', sans-serif !important;
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    color: var(--mui-text-primary) !important;
+    border-bottom: 2px solid #BFDBFE;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.mui-desc-heading-box {
+    background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+    border-left: 5px solid var(--mui-primary);
+    border-radius: var(--mui-radius-sm);
+    padding: 12px 16px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(29, 94, 184, 0.05);
+}
+
+.mui-desc-heading-title {
+    font-family: 'Urbanist', sans-serif !important;
+    font-size: 1.3rem !important;
+    font-weight: 800 !important;
+    color: var(--mui-text-primary) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 0;
+}
+
+/* ==========================================
+   6. Buttons & Inputs System
+   ========================================== */
+/* Icon & Title Spacing Helpers */
+.mui-card-icon-gap {
+    margin-bottom: 16px !important;
+}
+
+.mui-card-title-gap {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+    line-height: 1.35 !important;
+}
+
+.btn-mui-primary {
+    background: linear-gradient(135deg, var(--mui-primary) 0%, var(--mui-primary-dark) 100%) !important;
+    color: #FFFFFF !important;
+    font-family: 'Urbanist', sans-serif !important;
+    font-weight: 800 !important;
+    border: none !important;
+    border-radius: var(--mui-radius-sm) !important;
+    box-shadow: 0 4px 14px rgba(29, 94, 184, 0.25) !important;
+    transition: var(--mui-transition) !important;
+}
+
+.btn-mui-primary:hover {
+    background: linear-gradient(135deg, var(--mui-primary-dark) 0%, var(--mui-primary-deep) 100%) !important;
+    box-shadow: 0 6px 20px rgba(29, 94, 184, 0.35) !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-mui-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+    color: #FFFFFF !important;
+    font-family: 'Urbanist', sans-serif !important;
+    font-weight: 800 !important;
+    border: none !important;
+    border-radius: var(--mui-radius-sm) !important;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3) !important;
+    transition: var(--mui-transition) !important;
+}
+
+.btn-mui-whatsapp:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4) !important;
+}

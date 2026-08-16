@@ -103,7 +103,7 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card p-3 border-primary mb-4" style="background-color: #f0f7ff; border: 1px solid #0088cc !important;">
+                <div class="card p-3 border-primary mb-4" style="background-color: #f0f7ff; border: 1px solid #1D5EB8 !important;">
                     <label class="font-weight-bold text-primary mb-1 d-flex align-items-center">
                         <i class="fa fa-robot mr-2" style="font-size: 1.2rem;"></i> Gemini AI Assistant Active
                     </label>
@@ -140,6 +140,18 @@
                     <div class="form-group mb-0">
                         <input type="text" name="video_url" class="form-control form-control-sm" value="<?= esc($product['video'] ?? '') ?>" placeholder="Or enter MP4 Video URL / YouTube link">
                     </div>
+                <div class="card p-3 border-primary mb-4" style="background-color: #f0f7ff; border: 1px solid #1D5EB8 !important; border-radius: 10px;">
+                    <label class="font-weight-bold text-primary mb-1 d-flex align-items-center">
+                        <i class="fa fa-robot mr-2" style="font-size: 1.2rem;"></i> Gemini AI Assistant
+                    </label>
+                    <small class="text-muted d-block mb-2">Enter your Gemini API Key once to enable 1-Click AI content generation across all fields.</small>
+                    <div class="input-group input-group-sm mb-1">
+                        <input type="password" id="gemini_api_key_input" class="form-control" placeholder="Paste Gemini API Key here" value="<?= esc(env('GEMINI_API_KEY') ?? '') ?>">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-primary" id="btnToggleApiKey" title="Show/Hide Key"><i class="fa fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <small class="text-muted d-block"><a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-primary font-weight-bold"><i class="fa fa-key mr-1"></i>Get Free Key from Google AI Studio</a></small>
                 </div>
 
                 <div class="card p-3 bg-light border-0 mb-4">

@@ -26,7 +26,13 @@ class Product extends BaseController
         if (!empty($product['images'])) {
             $decoded = json_decode($product['images'], true);
             if (is_array($decoded)) {
-                $extraImages = $decoded;
+                foreach ($decoded as $imgItem) {
+                    $imgItem = trim($imgItem);
+                    // Exclude empty, duplicate main_image, or demo dummy template assets
+                    if (!empty($imgItem) && $imgItem !== $product['main_image'] && strpos($imgItem, 'assets/images/') === false) {
+                        $extraImages[] = $imgItem;
+                    }
+                }
             }
         }
 

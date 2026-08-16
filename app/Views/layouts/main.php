@@ -39,10 +39,10 @@ if (!isset($allCategories) || empty($allCategories)) {
         })(document);
     </script>
 
-    <!-- Google Fonts: Sans-Serif Typography -->
+    <!-- Google Fonts: Urbanist (Headings) & Albert Sans Light (Body Text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
@@ -51,11 +51,40 @@ if (!isset($allCategories) || empty($allCategories)) {
     <link rel="stylesheet" href="<?= base_url('assets/css/demo1.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/vendor/simple-line-icons/css/simple-line-icons.min.css') ?>">
+    <!-- Kagzi Ventures Material UI 3 Custom Stylesheet -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/material-custom.css') ?>">
 
     <style>
-        /* Modern Sans-Serif Font Applied Globally Across Entire Website */
-        html, body, h1, h2, h3, h4, h5, h6, p, span, a, li, button, input, select, textarea, label, table, td, th, .menu > li > a, .btn, .form-control, .top-message, .product-title, .product-price, .header, .footer, .widget-title, .nav-link {
-            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        /* Base Typography Rules: Urbanist for Headings & Titles; Albert Sans Light for Body & Text (14px base font) */
+        html {
+            font-size: 14px !important;
+        }
+        body {
+            font-size: 14px !important;
+            line-height: 1.6;
+            color: #334155;
+        }
+        html, body, p, span, a, li, button, input, select, textarea, label, table, td, th, .btn, .form-control, .top-message, .product-price, .header, .footer, .nav-link {
+            font-family: 'Albert Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 300;
+        }
+        p, li, td, th, label, .form-control {
+            font-size: 14px;
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .h1, .h2, .h3, .h4, .h5, .h6,
+        .product-title, .product-title a,
+        .subtitle, .title, .widget-title,
+        .luxury-footer-heading,
+        .featured-products-heading,
+        .luxury-feature-title,
+        .usp-feature-title,
+        .category-card-name,
+        .menu > li > a,
+        .page-title {
+            font-family: 'Urbanist', 'Albert Sans', sans-serif !important;
+            font-weight: 700;
         }
 
         /* Preserve FontAwesome & Icon Fonts (Fix Broken Icons) */
@@ -86,13 +115,46 @@ if (!isset($allCategories) || empty($allCategories)) {
             pointer-events: none !important;
         }
 
-        /* Feminine Luxury Theme - Soft Light Shade & Magenta #C21E56 Custom Overrides */
+        /* Kagzi Ventures Corporate Theme - Logo Brand Royal Blue #1D5EB8 & Champagne Gold #C5A059 Overrides */
+        :root {
+            --kv-primary: #1D5EB8;
+            --kv-primary-dark: #154890;
+            --kv-primary-deep: #0F346C;
+            --kv-primary-light: #EFF6FF;
+            --kv-secondary-gold: #C5A059;
+            --kv-secondary-gold-dark: #A6823B;
+            --kv-gold-accent: #D4AF37;
+        }
+
+        /* Material UI 3 Elevation & Card Surface Utilities */
+        .mui-card-surface {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(29, 94, 184, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mui-card-surface:hover {
+            box-shadow: 0 10px 30px rgba(29, 94, 184, 0.12);
+            transform: translateY(-3px);
+        }
+        .mui-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
         .header-top {
             background-color: #0f172a !important;
         }
         .header-middle {
-            background: linear-gradient(180deg, #fff5f8 0%, #fdf2f8 100%) !important;
-            border-bottom: 1px solid #fbcfe8 !important;
+            background: linear-gradient(180deg, #F0F4FA 0%, #E6EEF8 100%) !important;
+            border-bottom: 1px solid #BFDBFE !important;
             padding: 12px 0 !important;
         }
         .btn-whatsapp-stylish {
@@ -112,11 +174,11 @@ if (!isset($allCategories) || empty($allCategories)) {
             color: #ffffff !important;
         }
         .btn-mail-stylish {
-            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%) !important;
             border: none !important;
             padding: 9px 20px !important;
             border-radius: 50px !important;
-            box-shadow: 0 4px 14px rgba(194, 30, 86, 0.3) !important;
+            box-shadow: 0 4px 14px rgba(29, 94, 184, 0.3) !important;
             transition: all 0.3s ease !important;
             font-size: 12.5px !important;
             letter-spacing: 0.4px !important;
@@ -124,7 +186,7 @@ if (!isset($allCategories) || empty($allCategories)) {
         }
         .btn-mail-stylish:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(194, 30, 86, 0.45) !important;
+            box-shadow: 0 6px 20px rgba(29, 94, 184, 0.45) !important;
             color: #ffffff !important;
         }
         /* Header Middle Padding & Spacing */
@@ -134,14 +196,14 @@ if (!isset($allCategories) || empty($allCategories)) {
             border-bottom: none !important;
         }
 
-        /* Main Menu Bar (#C21E56) Flush Fit against Search Section */
+        /* Main Menu Bar (#1D5EB8 Royal Blue with Gold Accent Border) Flush Fit against Search Section */
         .header-bottom.custom-main-navbar {
-            background: #C21E56 !important;
-            border-bottom: 3px solid #e11d48 !important;
-            box-shadow: 0 4px 15px rgba(194, 30, 86, 0.35) !important;
+            background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%) !important;
+            border-bottom: 3px solid #C5A059 !important;
+            box-shadow: 0 4px 15px rgba(29, 94, 184, 0.35) !important;
             min-height: 62px !important;
             padding: 3px 0 !important;
-            margin-top: 0 !important; /* No spacing between search box section and main menu strip */
+            margin-top: 0 !important;
             border-top: none !important;
         }
 
@@ -165,25 +227,25 @@ if (!isset($allCategories) || empty($allCategories)) {
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         .text-primary, .product-price.text-primary, .new-price.text-primary {
-            color: #C21E56 !important;
+            color: #1D5EB8 !important;
         }
         .btn-primary, .btn-outline-primary:hover {
-            background-color: #C21E56 !important;
-            border-color: #C21E56 !important;
+            background-color: #1D5EB8 !important;
+            border-color: #1D5EB8 !important;
             color: #ffffff !important;
         }
         .btn-outline-primary {
-            color: #C21E56 !important;
-            border-color: #C21E56 !important;
+            color: #1D5EB8 !important;
+            border-color: #1D5EB8 !important;
         }
         .badge-primary, .bg-primary {
-            background-color: #C21E56 !important;
+            background-color: #1D5EB8 !important;
         }
 
-        /* Quick View Button Theme Override (#C21E56) */
+        /* Quick View Button Theme Override (#1D5EB8) */
         .btn-quickview,
         a.btn-quickview {
-            background: #C21E56 !important;
+            background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%) !important;
             color: #ffffff !important;
             font-weight: 700 !important;
             text-transform: uppercase !important;
@@ -191,16 +253,16 @@ if (!isset($allCategories) || empty($allCategories)) {
             letter-spacing: 0.5px !important;
             border-radius: 6px !important;
             padding: 8px 16px !important;
-            box-shadow: 0 4px 12px rgba(194, 30, 86, 0.3) !important;
+            box-shadow: 0 4px 12px rgba(29, 94, 184, 0.3) !important;
             transition: all 0.25s ease !important;
             border: none !important;
             opacity: 0.95 !important;
         }
         .btn-quickview:hover,
         a.btn-quickview:hover {
-            background: #9f1239 !important;
+            background: #154890 !important;
             color: #ffffff !important;
-            box-shadow: 0 6px 18px rgba(194, 30, 86, 0.45) !important;
+            box-shadow: 0 6px 18px rgba(29, 94, 184, 0.45) !important;
             opacity: 1 !important;
         }
 
@@ -216,15 +278,19 @@ if (!isset($allCategories) || empty($allCategories)) {
 
         /* Search Bar & Category Box Border & Pill Styling */
         .header-search-wrapper {
-            border: 2px solid #f472b6 !important;
+            border: 2px solid #93C5FD !important;
             border-radius: 50px !important;
             background-color: #ffffff !important;
-            box-shadow: 0 4px 14px rgba(194, 30, 86, 0.12) !important;
+            box-shadow: 0 4px 14px rgba(29, 94, 184, 0.12) !important;
             overflow: hidden !important;
             display: flex !important;
             align-items: center !important;
             padding: 4px 5px 4px 18px !important;
             height: 48px !important;
+        }
+        .header-search-wrapper:focus-within {
+            border-color: #1D5EB8 !important;
+            box-shadow: 0 4px 18px rgba(29, 94, 184, 0.25) !important;
         }
         .header-search-wrapper input.form-control {
             border: none !important;
@@ -235,8 +301,8 @@ if (!isset($allCategories) || empty($allCategories)) {
             font-size: 14px !important;
         }
         .header-search-category .select-custom {
-            border-left: 1.5px solid #fbcfe8 !important;
-            background-color: #fff0f5 !important;
+            border-left: 1.5px solid #BFDBFE !important;
+            background-color: #EFF6FF !important;
             height: 100% !important;
             display: flex !important;
             align-items: center !important;
@@ -246,14 +312,14 @@ if (!isset($allCategories) || empty($allCategories)) {
         }
         .header-search-category select {
             border: none !important;
-            color: #334155 !important;
+            color: #1e293b !important;
             font-weight: 600 !important;
             font-size: 13.5px !important;
             background: transparent !important;
             cursor: pointer !important;
         }
         .header-search-category .btn.icon-magnifier {
-            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%) !important;
             color: #ffffff !important;
             border: none !important;
             border-radius: 40px !important;
@@ -268,17 +334,18 @@ if (!isset($allCategories) || empty($allCategories)) {
         }
         .header-search-category .btn.icon-magnifier:hover {
             transform: scale(1.04);
-            box-shadow: 0 4px 12px rgba(194, 30, 86, 0.35) !important;
+            box-shadow: 0 4px 12px rgba(29, 94, 184, 0.35) !important;
             color: #ffffff !important;
         }
 
-        /* Custom Luxury Dark Navy Footer (Exact Match to Screenshot) */
+        /* Custom Luxury Dark Navy Footer */
         footer.luxury-footer,
         .luxury-footer {
-            background: #081325 !important;
-            background-color: #081325 !important;
+            background: #09111E !important;
+            background-color: #09111E !important;
             color: #94a3b8 !important;
-            font-family: 'Open Sans', sans-serif !important;
+            font-family: 'Albert Sans', sans-serif !important;
+            font-weight: 300 !important;
             position: relative !important;
             padding-top: 0 !important;
             padding-bottom: 0 !important;
@@ -300,14 +367,15 @@ if (!isset($allCategories) || empty($allCategories)) {
             position: absolute !important;
             top: 0 !important;
             left: 5% !important;
-            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%) !important;
+            border-bottom: 2px solid #C5A059 !important;
             color: #ffffff !important;
             font-weight: 800 !important;
             font-size: 13px !important;
             padding: 9px 28px 9px 20px !important;
             border-bottom-right-radius: 12px !important;
             clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%) !important;
-            box-shadow: 0 4px 15px rgba(194, 30, 86, 0.45) !important;
+            box-shadow: 0 4px 15px rgba(29, 94, 184, 0.45) !important;
             z-index: 10 !important;
             display: inline-flex !important;
             align-items: center !important;
@@ -351,7 +419,7 @@ if (!isset($allCategories) || empty($allCategories)) {
             left: 0;
             width: 34px;
             height: 2.5px;
-            background: #C21E56;
+            background: #C5A059;
             border-radius: 4px;
         }
 
@@ -390,8 +458,8 @@ if (!isset($allCategories) || empty($allCategories)) {
             text-decoration: none !important;
         }
         .btn-footer-readmore:hover {
-            background: #C21E56 !important;
-            border-color: #C21E56 !important;
+            background: #1D5EB8 !important;
+            border-color: #1D5EB8 !important;
             color: #ffffff !important;
             transform: translateX(4px) !important;
         }
@@ -408,13 +476,13 @@ if (!isset($allCategories) || empty($allCategories)) {
             height: 38px !important;
             min-width: 38px !important;
             border-radius: 50% !important;
-            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%) !important;
             color: #ffffff !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             font-size: 15px !important;
-            box-shadow: 0 4px 10px rgba(194, 30, 86, 0.35) !important;
+            box-shadow: 0 4px 10px rgba(29, 94, 184, 0.35) !important;
         }
         .luxury-contact-label {
             font-size: 11px !important;
@@ -436,7 +504,7 @@ if (!isset($allCategories) || empty($allCategories)) {
             transition: color 0.2s ease !important;
         }
         .luxury-contact-val a:hover {
-            color: #f472b6 !important;
+            color: #60A5FA !important;
         }
 
         .luxury-social-row {
@@ -451,7 +519,7 @@ if (!isset($allCategories) || empty($allCategories)) {
             width: 38px !important;
             height: 38px !important;
             border-radius: 50% !important;
-            border: 2px solid #C21E56 !important;
+            border: 2px solid #1D5EB8 !important;
             background: transparent !important;
             color: #ffffff !important;
             display: inline-flex !important;
@@ -462,10 +530,10 @@ if (!isset($allCategories) || empty($allCategories)) {
             text-decoration: none !important;
         }
         .luxury-social-outline-btn:hover {
-            background: #C21E56 !important;
+            background: #1D5EB8 !important;
             color: #ffffff !important;
             transform: translateY(-3px) !important;
-            box-shadow: 0 4px 14px rgba(194, 30, 86, 0.45) !important;
+            box-shadow: 0 4px 14px rgba(29, 94, 184, 0.45) !important;
         }
 
         /* Important Links List */
@@ -490,7 +558,7 @@ if (!isset($allCategories) || empty($allCategories)) {
             text-decoration: none !important;
         }
         .luxury-link-item a:hover {
-            color: #f472b6 !important;
+            color: #60A5FA !important;
             padding-left: 4px !important;
         }
         .luxury-link-item i.link-icon {
@@ -519,9 +587,9 @@ if (!isset($allCategories) || empty($allCategories)) {
             text-decoration: none !important;
         }
         .luxury-pill-btn:hover {
-            background: rgba(194, 30, 86, 0.18) !important;
-            border-color: #C21E56 !important;
-            color: #f472b6 !important;
+            background: rgba(29, 94, 184, 0.18) !important;
+            border-color: #1D5EB8 !important;
+            color: #60A5FA !important;
         }
         .luxury-pill-btn-full {
             grid-column: span 2 !important;
@@ -544,13 +612,13 @@ if (!isset($allCategories) || empty($allCategories)) {
             height: 44px !important;
             min-width: 44px !important;
             border-radius: 50% !important;
-            background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%) !important;
+            background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%) !important;
             color: #ffffff !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             font-size: 18px !important;
-            box-shadow: 0 4px 12px rgba(194, 30, 86, 0.35) !important;
+            box-shadow: 0 4px 12px rgba(29, 94, 184, 0.35) !important;
         }
         .luxury-feature-title {
             color: #ffffff !important;
@@ -578,7 +646,7 @@ if (!isset($allCategories) || empty($allCategories)) {
             text-decoration: none !important;
         }
         .luxury-bottom-bar a:hover {
-            color: #f472b6 !important;
+            color: #60A5FA !important;
         }
         .scroll-top-btn {
             width: 36px !important;
@@ -594,8 +662,8 @@ if (!isset($allCategories) || empty($allCategories)) {
             text-decoration: none !important;
         }
         .scroll-top-btn:hover {
-            background: #C21E56 !important;
-            border-color: #C21E56 !important;
+            background: #1D5EB8 !important;
+            border-color: #1D5EB8 !important;
             color: #ffffff !important;
         }
     </style>
@@ -626,7 +694,7 @@ if (!isset($allCategories) || empty($allCategories)) {
             </div>
 
             <!-- Main Header Middle: Soft Light Shade Background & Logo (Left), Search (Middle), WhatsApp & Mail Enquiries (Right) -->
-            <div class="header-middle text-dark sticky-header" style="background: linear-gradient(180deg, #fff5f8 0%, #fdf2f8 100%) !important; border-bottom: none !important;">
+            <div class="header-middle text-dark sticky-header" style="background: linear-gradient(180deg, #F0F4FA 0%, #E6EEF8 100%) !important; border-bottom: none !important;">
                 <div class="container d-flex align-items-center justify-content-between">
                     <!-- Left Side: Mobile Toggle & Logo -->
                     <div class="header-left d-flex align-items-center">
@@ -673,7 +741,7 @@ if (!isset($allCategories) || empty($allCategories)) {
                 </div>
             </div>
 
-            <!-- Enhanced Navigation Menu Below Header: Magenta #C21E56 Theme -->
+            <!-- Enhanced Navigation Menu Below Header: Kagzi Brand Royal Blue #1D5EB8 Theme -->
             <style>
                 .custom-main-navbar .sf-with-ul::after,
                 .custom-main-navbar .menu a::after,
@@ -683,7 +751,7 @@ if (!isset($allCategories) || empty($allCategories)) {
                     content: none !important;
                 }
             </style>
-            <div class="header-bottom sticky-header d-none d-lg-block custom-main-navbar" style="background: #C21E56 !important; border-bottom: 3px solid #e11d48 !important; box-shadow: 0 4px 15px rgba(194, 30, 86, 0.35);" data-sticky-options="{'mobile': false}">
+            <div class="header-bottom sticky-header d-none d-lg-block custom-main-navbar" style="background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%) !important; border-bottom: 3px solid #C5A059 !important; box-shadow: 0 4px 15px rgba(29, 94, 184, 0.35);" data-sticky-options="{'mobile': false}">
                 <div class="container">
                     <nav class="main-nav w-100">
                         <ul class="menu d-flex align-items-center" style="gap: 5px;">
@@ -713,7 +781,7 @@ if (!isset($allCategories) || empty($allCategories)) {
                                         <?php foreach ($allCategories as $cat): ?>
                                             <li>
                                                 <a href="<?= base_url('shop?category=' . esc($cat['slug'])) ?>" class="d-flex align-items-center font-weight-medium py-2 px-4" style="color: #334155; font-size: 13px;">
-                                                    <i class="fa fa-tag text-primary mr-2" style="font-size: 12px; color: #C21E56 !important;"></i>
+                                                    <i class="fa fa-tag text-primary mr-2" style="font-size: 12px; color: #1D5EB8 !important;"></i>
                                                     <?= esc($cat['name']) ?>
                                                 </a>
                                             </li>

@@ -4,7 +4,7 @@
 <!-- Stats Cards Row -->
 <div class="row">
     <div class="col-md-4 mb-4">
-        <div class="card card-dash p-4 border-left-primary" style="border-left: 4px solid #0088cc;">
+        <div class="card card-dash p-4 border-left-primary" style="border-left: 4px solid #1D5EB8;">
             <div class="d-flex align-items-center justify-content-between">
                 <div>
                     <span class="text-muted text-uppercase small font-weight-bold">Total Products</span>

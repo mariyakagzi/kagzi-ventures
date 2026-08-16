@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
     <style>
-        body, h1, h2, h3, h4, h5, h6, button, input, select, textarea, label, table, td, th {
-            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        body, button, input, select, textarea, label, table, td, th, p, span, a {
+            font-family: 'Albert Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 300;
+        }
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .sidebar-brand {
+            font-family: 'Urbanist', sans-serif !important;
+            font-weight: 700;
         }
         i, i::before, i::after, .fa, .fas, .far, .fal, .fab, [class^="fa-"], [class*=" fa-"] {
             font-family: "Font Awesome 5 Free", "FontAwesome" !important;
@@ -61,8 +66,9 @@
         }
         .admin-sidebar .sidebar-menu li a:hover,
         .admin-sidebar .sidebar-menu li.active a {
-            background: #0088cc;
+            background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%);
             color: #ffffff;
+            border-left: 4px solid #C5A059;
         }
         .admin-sidebar .sidebar-menu li a i {
             width: 25px;
@@ -245,6 +251,11 @@
                     alert('Error connecting to AI Generation service: ' + (err || status));
                 }
             });
+        $(document).on('click', '#btnToggleApiKey', function() {
+            var $input = $('#gemini_api_key_input');
+            var type = $input.attr('type') === 'password' ? 'text' : 'password';
+            $input.attr('type', type);
+            $(this).find('i').toggleClass('fa-eye fa-eye-slash');
         });
     });
 

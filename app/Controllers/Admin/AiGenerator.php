@@ -34,19 +34,21 @@ class AiGenerator extends BaseAdminController
         if (empty($apiKey)) {
             return $this->response->setJSON([
                 'success' => false,
-                'message' => 'Gemini API Key is missing. Please enter your Gemini API Key in the Gemini AI Assistant box (on the right sidebar) or save it in .env.'
+                'message' => 'Gemini API Key is missing. Please paste your Gemini API Key in the Gemini AI Assistant box (on the right sidebar) or get a free key from Google AI Studio.'
             ]);
         } else {
             // Save key to .env if not set or different
             $envPath = FCPATH . '../.env';
-            if (file_exists($envPath)) {
+            if (!file_exists($envPath)) {
+                @file_put_contents($envPath, "ENVIRONMENT = development\nCI_ENVIRONMENT = development\nGEMINI_API_KEY = '" . addslashes($apiKey) . "'\n");
+            } else {
                 $envContent = file_get_contents($envPath);
                 if (strpos($envContent, 'GEMINI_API_KEY') !== false) {
                     $envContent = preg_replace('/GEMINI_API_KEY\s*=\s*.*/', 'GEMINI_API_KEY = \'' . addslashes($apiKey) . '\'', $envContent);
                 } else {
                     $envContent .= "\nGEMINI_API_KEY = '" . addslashes($apiKey) . "'\n";
                 }
-                file_put_contents($envPath, $envContent);
+                @file_put_contents($envPath, $envContent);
             }
         }
 

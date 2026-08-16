@@ -110,7 +110,7 @@
                         color: #ffffff;
                     }
                     .usp-icon-magenta {
-                        background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%);
+                        background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%);
                         color: #ffffff;
                     }
                     .usp-icon-gold {
@@ -207,21 +207,21 @@
                     }
                     .category-card-item:hover {
                         transform: translateY(-5px);
-                        border-color: #fbcfe8;
-                        box-shadow: 0 12px 25px rgba(194, 30, 86, 0.15);
+                        border-color: #BFDBFE;
+                        box-shadow: 0 12px 25px rgba(29, 94, 184, 0.15);
                     }
                     .category-card-icon {
                         width: 56px;
                         height: 56px;
                         border-radius: 50%;
-                        background: linear-gradient(135deg, #fff0f5 0%, #fde8ef 100%);
-                        color: #C21E56;
+                        background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+                        color: #1D5EB8;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         font-size: 22px;
                         margin-bottom: 12px;
-                        border: 1px solid #fbcfe8;
+                        border: 1px solid #BFDBFE;
                     }
                     .category-card-name {
                         font-size: 15px;
@@ -232,7 +232,7 @@
                     .category-card-link {
                         font-size: 12px;
                         font-weight: 700;
-                        color: #C21E56;
+                        color: #1D5EB8;
                         text-transform: uppercase;
                         letter-spacing: 0.5px;
                     }
@@ -263,7 +263,7 @@
 
                 <!-- View All Categories Button -->
                 <div class="text-center mt-1 mb-5 appear-animate" data-animation-name="fadeInUpShorter">
-                    <a href="<?= base_url('shop') ?>" class="btn font-weight-bold text-white px-5" style="background: linear-gradient(135deg, #C21E56 0%, #9f1239 100%); border: none; border-radius: 50px; padding: 13px 36px; box-shadow: 0 4px 15px rgba(194, 30, 86, 0.35); font-size: 14px; letter-spacing: 0.5px;">
+                    <a href="<?= base_url('shop') ?>" class="btn font-weight-bold text-white px-5" style="background: linear-gradient(135deg, #1D5EB8 0%, #154890 100%); border: none; border-radius: 50px; padding: 13px 36px; box-shadow: 0 4px 15px rgba(29, 94, 184, 0.35); font-size: 14px; letter-spacing: 0.5px;">
                         <i class="fa fa-th-large mr-2"></i> View All Categories <i class="fa fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -291,7 +291,7 @@
         display: block;
         width: 70px;
         height: 3.5px;
-        background: linear-gradient(90deg, #C21E56, #f472b6);
+        background: linear-gradient(90deg, #1D5EB8, #C5A059);
         margin: 8px auto 0;
         border-radius: 10px;
     }
@@ -327,8 +327,8 @@
     }
     .products-slider .product-default:hover {
         transform: translateY(-6px) !important;
-        box-shadow: 0 12px 32px rgba(194, 30, 86, 0.15) !important;
-        border-color: #fbcfe8 !important;
+        box-shadow: 0 12px 32px rgba(29, 94, 184, 0.15) !important;
+        border-color: #BFDBFE !important;
     }
     .products-slider .product-default figure {
         position: relative !important;
@@ -374,13 +374,13 @@
         transition: color 0.2s ease !important;
     }
     .products-slider .product-title a:hover {
-        color: #C21E56 !important;
+        color: #1D5EB8 !important;
     }
     .products-slider .price-box {
         margin-top: auto !important;
         font-size: 16px !important;
         font-weight: 800 !important;
-        color: #C21E56 !important;
+        color: #1D5EB8 !important;
     }
 </style>
 
@@ -545,7 +545,7 @@
                     <?php foreach ($homeCategorySections as $section): ?>
                         <?php $cat = $section['category']; $catProds = $section['products']; ?>
                         <div class="home-category-section my-5 p-4 bg-white rounded border shadow-sm">
-                            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap pb-3 border-bottom" style="border-bottom: 2px solid #0088cc !important;">
+                            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap pb-3 border-bottom" style="border-bottom: 2px solid #1D5EB8 !important;">
                                 <div>
                                     <h3 class="font-weight-bold text-dark mb-1 d-flex align-items-center" style="font-size: 1.6rem;">
                                         <i class="fa fa-folder-open text-primary mr-2"></i> <?= esc($cat['name']) ?>
