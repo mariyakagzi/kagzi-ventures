@@ -186,7 +186,7 @@
                             <i class="fab fa-whatsapp mr-2" style="font-size: 1.4rem;"></i> Enquire on WhatsApp
                         </a>
 
-                        <a href="mailto:info@kagziventures.com?subject=<?= $mailSubject ?>" class="btn btn-primary btn-lg font-weight-bold my-1 d-inline-flex align-items-center" style="font-size: 1.05rem; padding: 12px 24px; border-radius: 6px;">
+                        <a href="mailto:info@kagziventures.in?subject=<?= $mailSubject ?>" class="btn btn-primary btn-lg font-weight-bold my-1 d-inline-flex align-items-center" style="font-size: 1.05rem; padding: 12px 24px; border-radius: 6px;">
                             <i class="fa fa-envelope mr-2"></i> Mail Enquiry
                         </a>
                     </div>

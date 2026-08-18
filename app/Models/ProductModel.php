@@ -30,6 +30,7 @@ class ProductModel extends Model
         'featured',
         'is_trending',
         'is_home_category',
+        'shitabi',
         'status',
         'created_at',
         'updated_at',
@@ -42,6 +43,51 @@ class ProductModel extends Model
         $builder = $this->select('products.*, categories.name as category_name, categories.slug as category_slug')
                         ->join('categories', 'categories.id = products.category_id', 'left')
                         ->where('products.status', 1);
+
+        if (!empty($categorySlug)) {
+            $builder->where('categories.slug', $categorySlug);
+        }
+
+        if (!empty($searchQuery)) {
+            $builder->groupStart()
+                    ->like('products.name', $searchQuery)
+                    ->orLike('products.description', $searchQuery)
+                    ->orLike('products.short_description', $searchQuery)
+                    ->orLike('products.sku', $searchQuery)
+                    ->groupEnd();
+        }
+
+        switch ($sort) {
+            case 'price_low':
+                $builder->orderBy('products.price', 'ASC');
+                break;
+            case 'price_high':
+                $builder->orderBy('products.price', 'DESC');
+                break;
+            case 'name':
+                $builder->orderBy('products.name', 'ASC');
+                break;
+            case 'date':
+            case 'newest':
+                $builder->orderBy('products.id', 'DESC');
+                break;
+            default:
+                $builder->orderBy('products.featured', 'DESC')->orderBy('products.id', 'DESC');
+                break;
+        }
+
+        return [
+            'products' => $builder->paginate($perPage),
+            'pager'    => $this->pager,
+        ];
+    }
+
+    public function getShitabiProductsPaginated(?string $categorySlug = null, ?string $searchQuery = null, string $sort = 'default', int $perPage = 12)
+    {
+        $builder = $this->select('products.*, categories.name as category_name, categories.slug as category_slug')
+                        ->join('categories', 'categories.id = products.category_id', 'left')
+                        ->where('products.status', 1)
+                        ->where('products.shitabi', 1);
 
         if (!empty($categorySlug)) {
             $builder->where('categories.slug', $categorySlug);

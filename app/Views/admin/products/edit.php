@@ -172,6 +172,11 @@
                         <label class="custom-control-label font-weight-semibold text-primary" for="homeCatCheck"><i class="fa fa-home mr-1"></i> Display in Home Category Section</label>
                     </div>
 
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" name="shitabi" class="custom-control-input" id="shitabiCheck" value="1" <?= (($product['shitabi'] ?? 0) == 1) ? 'checked' : '' ?>>
+                        <label class="custom-control-label font-weight-semibold text-success" for="shitabiCheck"><i class="fa fa-gift mr-1"></i> Mark as Shitabi Gift</label>
+                    </div>
+
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" name="status" class="custom-control-input" id="statusCheck" value="1" <?= ($product['status'] == 1) ? 'checked' : '' ?>>
                         <label class="custom-control-label font-weight-semibold" for="statusCheck">Active (Visible on Shop)</label>

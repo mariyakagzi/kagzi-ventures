@@ -79,7 +79,7 @@
         <form action="<?= base_url('admin/loginProcess') ?>" method="post">
             <div class="form-group">
                 <label class="font-weight-semibold text-dark"><i class="fa fa-envelope text-primary mr-1"></i> Email Address</label>
-                <input type="email" name="email" class="form-control" placeholder="admin@kagziventures.com" value="admin@kagziventures.com" required autofocus>
+                <input type="email" name="email" class="form-control" placeholder="admin@kagziventures.in" value="admin@kagziventures.in" required autofocus>
             </div>
 
             <div class="form-group">

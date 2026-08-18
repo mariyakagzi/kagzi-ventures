@@ -89,6 +89,7 @@ class Products extends BaseAdminController
             'featured'          => $this->request->getPost('featured') ? 1 : 0,
             'is_trending'       => $this->request->getPost('is_trending') ? 1 : 0,
             'is_home_category'  => $this->request->getPost('is_home_category') ? 1 : 0,
+            'shitabi'           => $this->request->getPost('shitabi') ? 1 : 0,
             'status'            => $this->request->getPost('status') ? 1 : 0,
         ];
 
@@ -178,6 +179,7 @@ class Products extends BaseAdminController
             'featured'          => $this->request->getPost('featured') ? 1 : 0,
             'is_trending'       => $this->request->getPost('is_trending') ? 1 : 0,
             'is_home_category'  => $this->request->getPost('is_home_category') ? 1 : 0,
+            'shitabi'           => $this->request->getPost('shitabi') ? 1 : 0,
             'status'            => $this->request->getPost('status') ? 1 : 0,
         ];
 

@@ -2,11 +2,26 @@
 
 <?= $this->section('content') ?>
 <main class="main">
+    <?php if (!empty($isShitabiPage) && $isShitabiPage): ?>
+        <div class="page-header page-header-bg text-left mb-4" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 50px 0; border-bottom: 3px solid #C5A059; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <div class="container">
+                <h1 class="text-white font-weight-bold mb-1" style="font-size: 2.5rem; font-family: 'Urbanist', sans-serif !important;">Shitabi Gifts</h1>
+                <p class="font-weight-semibold mb-0" style="font-size: 1.1rem; color: #fef08a !important; letter-spacing: 0.5px;">
+                    <i class="fa fa-gift mr-2"></i> Handpicked Premium Gifts for Special Occasions
+                </p>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <div class="container">
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= base_url('/') ?>"><i class="icon-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="<?= base_url('shop') ?>">Shop</a></li>
+                <?php if (!empty($isShitabiPage) && $isShitabiPage): ?>
+                    <li class="breadcrumb-item"><a href="<?= base_url('shitabi-gifts') ?>">Shitabi Gifts</a></li>
+                <?php else: ?>
+                    <li class="breadcrumb-item"><a href="<?= base_url('shop') ?>">Shop</a></li>
+                <?php endif; ?>
                 <?php if (!empty($currentCategory)): ?>
                     <li class="breadcrumb-item active" aria-current="page"><?= esc($currentCategory['name']) ?></li>
                 <?php elseif (!empty($searchQuery)): ?>
@@ -137,12 +152,12 @@
                             <div class="widget-body">
                                 <ul class="cat-list">
                                     <li class="<?= empty($catParam) ? 'active' : '' ?>">
-                                        <a href="<?= base_url('shop') ?>">All Categories</a>
+                                        <a href="<?= !empty($isShitabiPage) ? base_url('shitabi-gifts') : base_url('shop') ?>">All Categories</a>
                                     </li>
                                     <?php if (!empty($allCategories)): ?>
                                         <?php foreach ($allCategories as $cat): ?>
                                             <li class="<?= ($catParam === $cat['slug']) ? 'active font-weight-bold text-primary' : '' ?>">
-                                                <a href="<?= base_url('shop?category=' . $cat['slug']) ?>"><?= esc($cat['name']) ?></a>
+                                                <a href="<?= !empty($isShitabiPage) ? base_url('shitabi-gifts?category=' . $cat['slug']) : base_url('shop?category=' . $cat['slug']) ?>"><?= esc($cat['name']) ?></a>
                                             </li>
                                         <?php endforeach; ?>
                                     <?php endif; ?>

@@ -35,12 +35,12 @@ class Auth extends BaseController
         }
 
         // Fallback default admin check
-        if ($email === 'admin@kagziventures.com' && $password === 'admin123') {
+        if ($email === 'admin@kagziventures.in' && $password === 'admin123') {
             session()->set([
                 'admin_logged_in' => true,
                 'admin_id'        => 1,
                 'admin_name'      => 'Kagzi Admin',
-                'admin_email'     => 'admin@kagziventures.com',
+                'admin_email'     => 'admin@kagziventures.in',
             ]);
 
             return redirect()->to(base_url('admin/dashboard'))->with('success', 'Welcome back, Kagzi Admin!');

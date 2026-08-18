@@ -51,7 +51,7 @@
                         </div>
                         <div>
                             <h6 class="mb-0 font-weight-bold text-dark">Email</h6>
-                            <p class="mb-0 text-muted"><a href="mailto:info@kagziventures.com" class="text-dark font-weight-semibold">info@kagziventures.com</a></p>
+                            <p class="mb-0 text-muted"><a href="mailto:info@kagziventures.in" class="text-dark font-weight-semibold">info@kagziventures.in</a></p>
                         </div>
                     </div>
                 </div>

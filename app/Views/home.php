@@ -16,7 +16,7 @@
                 <i class="fa fa-envelope text-primary" style="font-size: 2rem;"></i>
                 <div class="info-box-content">
                     <h4>EMAIL ENQUIRY</h4>
-                    <p class="text-body">Send requests to info@kagziventures.com</p>
+                    <p class="text-body">Send requests to info@kagziventures.in</p>
                 </div>
             </div>
 
@@ -624,7 +624,7 @@
                                 <div class="feature-box-content p-0 mt-2">
                                     <h3 class="mb-0 pb-1">Mail Enquiries</h3>
                                     <h5 class="mb-1 pb-1">Official Quotes</h5>
-                                    <p>Send your requirements and bulk requests to info@kagziventures.com anytime.</p>
+                                    <p>Send your requirements and bulk requests to info@kagziventures.in anytime.</p>
                                 </div>
                             </div>
                         </div>

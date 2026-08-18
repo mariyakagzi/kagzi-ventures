@@ -15,7 +15,7 @@ class EcommerceSeeder extends Seeder
         $db->table('users')->insertBatch([
             [
                 'name'       => 'Kagzi Admin',
-                'email'      => 'admin@kagziventures.com',
+                'email'      => 'admin@kagziventures.in',
                 'password'   => password_hash('admin123', PASSWORD_DEFAULT),
                 'phone'      => '+123 456 7890',
                 'address'    => '123 Enterprise Way, Business Park',

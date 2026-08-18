@@ -156,7 +156,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `address`, `role`, `created_at`, `updated_at`) VALUES (1,'Kagzi Admin','admin@kagziventures.com','$2y$10$2Pi.mpVjLhAE1LKtYpBG3eABZiKhi2EP0mb0mxbUvO4B/JhJ0EbBy','+123 456 7890','123 Enterprise Way, Business Park','admin','2026-08-14 04:30:31','2026-08-14 04:30:31'),(2,'John Doe','customer@example.com','$2y$10$6POpSpJhRCWzhdsadDIk/uSubr1H179tsitiyHSKdVwfEAcJg1Ngm','+987 654 3210','456 Main Street, Cityville','customer','2026-08-14 04:30:31','2026-08-14 04:30:31');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `address`, `role`, `created_at`, `updated_at`) VALUES (1,'Kagzi Admin','admin@kagziventures.in','$2y$10$2Pi.mpVjLhAE1LKtYpBG3eABZiKhi2EP0mb0mxbUvO4B/JhJ0EbBy','+123 456 7890','123 Enterprise Way, Business Park','admin','2026-08-14 04:30:31','2026-08-14 04:30:31'),(2,'John Doe','customer@example.com','$2y$10$6POpSpJhRCWzhdsadDIk/uSubr1H179tsitiyHSKdVwfEAcJg1Ngm','+987 654 3210','456 Main Street, Cityville','customer','2026-08-14 04:30:31','2026-08-14 04:30:31');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 DROP TABLE IF EXISTS `wishlist`;

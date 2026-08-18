@@ -679,7 +679,7 @@ if (!isset($allCategories) || empty($allCategories)) {
                         <p class="top-message mb-0 font-weight-semibold text-white">
                             <i class="fab fa-whatsapp mr-1" style="font-size: 1.1rem; color: #25D366;"></i> WhatsApp: <a href="https://wa.me/919753875213" class="text-white" target="_blank">+91 9753875213</a> 
                             <span class="mx-2">|</span> 
-                            <i class="fa fa-envelope mr-1"></i> Email: <a href="mailto:info@kagziventures.com" class="text-white">info@kagziventures.com</a>
+                            <i class="fa fa-envelope mr-1"></i> Email: <a href="mailto:info@kagziventures.in" class="text-white">info@kagziventures.in</a>
                         </p>
                     </div>
 
@@ -734,7 +734,7 @@ if (!isset($allCategories) || empty($allCategories)) {
                         <a href="https://wa.me/919753875213?text=Hi%20Kagzi%20Ventures,%20I%20have%20an%20enquiry" target="_blank" class="btn btn-sm font-weight-bold mr-2 d-none d-sm-inline-flex align-items-center btn-whatsapp-stylish">
                             <i class="fab fa-whatsapp mr-2" style="font-size: 1.15rem;"></i> WhatsApp Enquiry
                         </a>
-                        <a href="mailto:info@kagziventures.com?subject=Product%20Enquiry" class="btn btn-sm font-weight-bold d-none d-sm-inline-flex align-items-center btn-mail-stylish">
+                        <a href="mailto:info@kagziventures.in?subject=Product%20Enquiry" class="btn btn-sm font-weight-bold d-none d-sm-inline-flex align-items-center btn-mail-stylish">
                             <i class="fa fa-envelope mr-2" style="font-size: 1rem;"></i> Mail Enquiry
                         </a>
                     </div>
@@ -788,6 +788,11 @@ if (!isset($allCategories) || empty($allCategories)) {
                                         <?php endforeach; ?>
                                     <?php endif; ?>
                                 </ul>
+                            </li>
+                            <li class="<?= url_is('shitabi-gifts*') ? 'active' : '' ?>">
+                                <a href="<?= base_url('shitabi-gifts') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 15px; text-transform: uppercase;">
+                                    <i class="fa fa-gift mr-2" style="font-size: 17px; color: #fef08a;"></i> Shitabi Gifts
+                                </a>
                             </li>
                             <li class="<?= url_is('contact*') ? 'active' : '' ?>">
                                 <a href="<?= base_url('contact') ?>" class="text-white py-3 px-4 font-weight-semibold d-flex align-items-center" style="font-size: 15px; text-transform: uppercase;">
@@ -861,7 +866,7 @@ if (!isset($allCategories) || empty($allCategories)) {
                                 </div>
                                 <div>
                                     <span class="luxury-contact-label">EMAIL</span>
-                                    <span class="luxury-contact-val"><a href="mailto:info@kagziventures.com">info@kagziventures.com</a></span>
+                                    <span class="luxury-contact-val"><a href="mailto:info@kagziventures.in">info@kagziventures.in</a></span>
                                 </div>
                             </div>
 
@@ -1020,14 +1025,6 @@ if (!isset($allCategories) || empty($allCategories)) {
         </footer>
     </div>
 
-    <div class="loading-overlay">
-        <div class="bounce-loader">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-        </div>
-    </div>
-
     <div class="mobile-menu-overlay"></div>
 
     <div class="mobile-menu-container">
@@ -1048,12 +1045,13 @@ if (!isset($allCategories) || empty($allCategories)) {
                             <?php endif; ?>
                         </ul>
                     </li>
+                    <li class="<?= url_is('shitabi-gifts*') ? 'active' : '' ?>"><a href="<?= base_url('shitabi-gifts') ?>"><i class="fa fa-gift"></i>Shitabi Gifts</a></li>
                     <li><a href="<?= base_url('contact') ?>"><i class="sicon-envelope"></i>Contact Us</a></li>
                 </ul>
 
                 <ul class="mobile-menu">
                     <li><a href="https://wa.me/919753875213?text=Hi%20Kagzi%20Ventures,%20I%20have%20an%20enquiry" target="_blank" class="text-success font-weight-bold"><i class="fab fa-whatsapp mr-2"></i>WhatsApp Enquiry</a></li>
-                    <li><a href="mailto:info@kagziventures.com?subject=Product%20Enquiry" class="text-primary font-weight-bold"><i class="fa fa-envelope mr-2"></i>Email Enquiry</a></li>
+                    <li><a href="mailto:info@kagziventures.in?subject=Product%20Enquiry" class="text-primary font-weight-bold"><i class="fa fa-envelope mr-2"></i>Email Enquiry</a></li>
                     <li><a href="<?= base_url('contact') ?>">Contact Us</a></li>
                 </ul>
             </nav>
