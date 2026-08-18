@@ -196,9 +196,8 @@
                     <div class="product-single-share mb-3">
                         <label class="sr-only">Share:</label>
                         <div class="social-icons mr-2">
-                            <a href="#" class="social-icon social-facebook icon-facebook" target="_blank" title="Facebook"></a>
-                            <a href="#" class="social-icon social-twitter icon-twitter" target="_blank" title="Twitter"></a>
-                            <a href="#" class="social-icon social-linkedin fab fa-linkedin-in" target="_blank" title="Linkedin"></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= rawurlencode(current_url()) ?>" class="social-icon social-facebook icon-facebook" target="_blank" title="Facebook"></a>
+                            <a href="https://api.whatsapp.com/send?text=<?= rawurlencode('Check this out: ' . $product['name'] . ' - ' . current_url()) ?>" class="social-icon social-whatsapp fab fa-whatsapp" style="background-color: #25D366; color: white;" target="_blank" title="WhatsApp"></a>
                         </div>
                     </div>
                 </div>

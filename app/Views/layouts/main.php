@@ -686,7 +686,6 @@ if (!isset($allCategories) || empty($allCategories)) {
                     <div class="header-right">
                         <div class="social-icons">
                             <a href="#" class="social-icon social-facebook icon-facebook text-white ml-0" target="_blank" title="Facebook"></a>
-                            <a href="#" class="social-icon social-twitter icon-twitter text-white ml-0" target="_blank" title="Twitter"></a>
                             <a href="#" class="social-icon social-instagram icon-instagram text-white ml-0" target="_blank" title="Instagram"></a>
                         </div>
                     </div>
@@ -1063,7 +1062,6 @@ if (!isset($allCategories) || empty($allCategories)) {
 
             <div class="social-icons">
                 <a href="#" class="social-icon social-facebook icon-facebook" target="_blank"></a>
-                <a href="#" class="social-icon social-twitter icon-twitter" target="_blank"></a>
                 <a href="#" class="social-icon social-instagram icon-instagram" target="_blank"></a>
             </div>
         </div>
