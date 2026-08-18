@@ -686,7 +686,7 @@ if (!isset($allCategories) || empty($allCategories)) {
                     <div class="header-right">
                         <div class="social-icons">
                             <a href="#" class="social-icon social-facebook icon-facebook text-white ml-0" target="_blank" title="Facebook"></a>
-                            <a href="#" class="social-icon social-instagram icon-instagram text-white ml-0" target="_blank" title="Instagram"></a>
+                            <a href="https://www.instagram.com/kagziventures/" class="social-icon social-instagram icon-instagram text-white ml-0" target="_blank" title="Instagram"></a>
                         </div>
                     </div>
                 </div>
@@ -871,7 +871,7 @@ if (!isset($allCategories) || empty($allCategories)) {
 
                             <div class="luxury-social-row">
                                 <a href="#" class="luxury-social-outline-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="luxury-social-outline-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.instagram.com/kagziventures/" class="luxury-social-outline-btn" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                                 <a href="https://wa.me/919753875213" target="_blank" class="luxury-social-outline-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
@@ -1062,7 +1062,7 @@ if (!isset($allCategories) || empty($allCategories)) {
 
             <div class="social-icons">
                 <a href="#" class="social-icon social-facebook icon-facebook" target="_blank"></a>
-                <a href="#" class="social-icon social-instagram icon-instagram" target="_blank"></a>
+                <a href="https://www.instagram.com/kagziventures/" class="social-icon social-instagram icon-instagram" target="_blank"></a>
             </div>
         </div>
     </div>
