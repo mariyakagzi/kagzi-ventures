@@ -10,12 +10,6 @@
     </div>
 
     <form action="<?= base_url('admin/categories/store') ?>" method="post" enctype="multipart/form-data">
-        <div class="card p-3 border-primary mb-4" style="background-color: #f0f7ff; border: 1px solid #1D5EB8 !important;">
-            <label class="font-weight-bold text-primary mb-1 d-flex align-items-center">
-                <i class="fa fa-robot mr-2" style="font-size: 1.2rem;"></i> Gemini AI Assistant Active
-            </label>
-            <small class="text-muted d-block">1-Click Category Description AI Generation is active. Click <strong>Generate with AI</strong> to auto-fill description.</small>
-        </div>
         <div class="form-group">
             <label class="font-weight-bold text-dark">Category Name <span class="text-danger">*</span></label>
             <input type="text" name="name" id="name" class="form-control" placeholder="e.g. Office Stationery" required>

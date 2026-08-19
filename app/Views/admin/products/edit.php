@@ -103,13 +103,6 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card p-3 border-primary mb-4" style="background-color: #f0f7ff; border: 1px solid #1D5EB8 !important;">
-                    <label class="font-weight-bold text-primary mb-1 d-flex align-items-center">
-                        <i class="fa fa-robot mr-2" style="font-size: 1.2rem;"></i> Gemini AI Assistant Active
-                    </label>
-                    <small class="text-muted d-block">1-Click AI Generation is active. Click any <strong>Generate with AI</strong> button to auto-create content.</small>
-                </div>
-
                 <div class="card p-3 bg-light border-0 mb-4">
                     <label class="font-weight-bold text-dark">Current Product Image</label>
                     <div class="mb-3 text-center bg-white p-2 border rounded">
