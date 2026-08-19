@@ -1012,9 +1012,9 @@ if (!isset($allCategories) || empty($allCategories)) {
                         © <?= date('Y') ?> Kagzi Ventures. All Rights Reserved.
                     </div>
                     <div class="d-flex align-items-center gap-3 mt-2 mt-sm-0">
-                        <a href="<?= base_url('contact') ?>" class="mr-3">Privacy Policy</a>
+                        <a href="<?= base_url('privacy-policy') ?>" class="mr-3">Privacy Policy</a>
                         <span class="text-muted mr-3">|</span>
-                        <a href="<?= base_url('contact') ?>" class="mr-3">Terms of Use</a>
+                        <a href="<?= base_url('terms-conditions') ?>" class="mr-3">Terms of Use</a>
                         <a href="#top" class="scroll-top-btn ml-2" title="Back to top">
                             <i class="fa fa-chevron-up"></i>
                         </a>

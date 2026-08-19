@@ -22,6 +22,24 @@ class Pages extends BaseController
         return view('contact', $data);
     }
 
+    public function privacyPolicy()
+    {
+        $data = [
+            'title' => 'Privacy Policy - Kagzi Ventures',
+        ];
+
+        return view('privacy-policy', $data);
+    }
+
+    public function terms()
+    {
+        $data = [
+            'title' => 'Terms & Conditions - Kagzi Ventures',
+        ];
+
+        return view('terms-conditions', $data);
+    }
+
     public function sendContact()
     {
         $name    = trim($this->request->getPost('name'));

@@ -31,6 +31,8 @@ $routes->get('/', 'Home::index');
 $routes->get('about', 'Pages::about');
 $routes->get('contact', 'Pages::contact');
 $routes->post('contact/send', 'Pages::sendContact');
+$routes->get('privacy-policy', 'Pages::privacyPolicy');
+$routes->get('terms-conditions', 'Pages::terms');
 $routes->get('shop', 'Shop::index');
 $routes->get('shitabi-gifts', 'Shop::shitabiGifts');
 $routes->get('shop/category/(:segment)', 'Shop::index/$1');
