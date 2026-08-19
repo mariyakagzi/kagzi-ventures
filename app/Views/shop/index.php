@@ -222,5 +222,36 @@
             </aside>
         </div>
     </div>
+
+    <?php if (!empty($isShitabiPage) && $isShitabiPage): ?>
+        <section class="shitabi-seo-section mt-5" style="background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%); border-top: 3px solid #C5A059; padding: 48px 0;">
+            <div class="container">
+                <h2 class="font-weight-bold mb-3" style="font-family: 'Urbanist', sans-serif; color: #0F172A; font-size: 1.75rem;">
+                    Shitabi Gifts in Indore &ndash; Trusted Gift Hampers Near Saifee Nagar
+                </h2>
+                <div style="font-size: 1.05rem; line-height: 1.8; color: #334155; font-family: 'Albert Sans', sans-serif; max-width: 900px;">
+                    <p>
+                        Looking for beautifully curated <strong>Shitabi gifts in Indore</strong>? Kagzi Ventures is a local gifting specialist based near
+                        <strong>Khatiwala Tank</strong>, proudly serving families across <strong>Saifee Nagar</strong> and the surrounding Dawoodi Bohra
+                        community in Indore, Madhya Pradesh. We understand the tradition and care that goes into a proper Shitabi hamper &mdash; from
+                        Ashara Mubaraka and Milad functions to weddings, Aqeeqa, and other Bohra community occasions &mdash; and we build every gift set to
+                        match that standard.
+                    </p>
+                    <p>
+                        Our Shitabi gift hampers are handpicked for quality and presentation, featuring premium storage sets, decorative packaging, and
+                        everyday utility items that recipients genuinely value long after the occasion. Because we're based right here in Indore, near
+                        Saifee Nagar and Khatiwala Tank, we're able to offer <strong>fast local delivery</strong> and personal service that larger,
+                        out-of-town gifting brands simply can't match.
+                    </p>
+                    <p>
+                        Whether you need a single Shitabi gift or bulk hampers for a community-wide function, our team can help you choose the right sets
+                        and get them delivered on time, anywhere in Indore. <a href="<?= base_url('contact') ?>" style="color: #1D5EB8; font-weight: 600;">Contact us</a>
+                        or reach out directly on <a href="https://wa.me/919753875213?text=<?= rawurlencode('Hi Kagzi Ventures, I would like to enquire about Shitabi Gifts.') ?>" target="_blank" style="color: #1D5EB8; font-weight: 600;">WhatsApp</a>
+                        to discuss your Shitabi gifting requirements in Saifee Nagar, Indore, and nearby areas.
+                    </p>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
 </main>
 <?= $this->endSection() ?>

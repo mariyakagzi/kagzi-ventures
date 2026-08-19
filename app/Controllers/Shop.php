@@ -63,7 +63,9 @@ class Shop extends BaseController
         $featuredProducts = $productModel->getFeaturedProducts(3);
 
         $data = [
-            'title'           => 'Shitabi Gifts - Kagzi Ventures',
+            'title'           => 'Shitabi Gifts in Indore | Saifee Nagar Gift Hampers - Kagzi Ventures',
+            'metaDescription' => 'Shitabi gifts in Indore from Kagzi Ventures, serving Saifee Nagar, Khatiwala Tank & nearby areas. Handpicked premium gift hampers for weddings, festivals & Dawoodi Bohra occasions, with fast local delivery.',
+            'metaKeywords'    => 'Shitabi gifts Indore, Shitabi gifts Saifee Nagar, gift hampers Indore, Dawoodi Bohra gifts, wedding gift hampers Indore, Saifee Nagar gifts, Khatiwala Tank gifts, Kagzi Ventures',
             'allCategories'   => $allCategories,
             'currentCategory' => $currentCategory,
             'catParam'        => $catParam,

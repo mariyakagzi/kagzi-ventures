@@ -17,8 +17,8 @@ if (!isset($allCategories) || empty($allCategories)) {
 
     <title><?= esc($title ?? 'Porto - Bootstrap eCommerce Template') ?></title>
 
-    <meta name="keywords" content="Kagzi Ventures, Ecommerce, Shopping, Online Store" />
-    <meta name="description" content="Kagzi Ventures - High quality products, best deals, fast shipping.">
+    <meta name="keywords" content="<?= esc($metaKeywords ?? 'Kagzi Ventures, Ecommerce, Shopping, Online Store') ?>" />
+    <meta name="description" content="<?= esc($metaDescription ?? 'Kagzi Ventures - High quality products, best deals, fast shipping.') ?>">
     <meta name="author" content="Kagzi Ventures">
 
     <!-- Favicon -->
