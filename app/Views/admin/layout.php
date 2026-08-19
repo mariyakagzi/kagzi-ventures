@@ -251,6 +251,8 @@
                     alert('Error connecting to AI Generation service: ' + (err || status));
                 }
             });
+        });
+
         $(document).on('click', '#btnToggleApiKey', function() {
             var $input = $('#gemini_api_key_input');
             var type = $input.attr('type') === 'password' ? 'text' : 'password';
