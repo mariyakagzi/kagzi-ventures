@@ -17,7 +17,7 @@ class AiGenerator extends BaseAdminController
         $productName = trim($this->request->getPost('product_name') ?? '');
         $categoryId  = (int)($this->request->getPost('category_id') ?? 0);
         $catName     = trim($this->request->getPost('category_name') ?? '');
-        $apiKey      = trim($this->request->getPost('api_key') ?? '');
+        $apiKey      = env('GEMINI_API_KEY') ?: (getenv('GEMINI_API_KEY') ?: '');
 
         if ($categoryId > 0 && empty($catName)) {
             $catModel = new CategoryModel();
@@ -28,28 +28,10 @@ class AiGenerator extends BaseAdminController
         }
 
         if (empty($apiKey)) {
-            $apiKey = env('GEMINI_API_KEY') ?: (getenv('GEMINI_API_KEY') ?: '');
-        }
-
-        if (empty($apiKey)) {
             return $this->response->setJSON([
                 'success' => false,
-                'message' => 'Gemini API Key is missing. Please paste your Gemini API Key in the Gemini AI Assistant box (on the right sidebar) or get a free key from Google AI Studio.'
+                'message' => 'AI API Key is not configured. Please set GEMINI_API_KEY in the .env file.'
             ]);
-        } else {
-            // Save key to .env if not set or different
-            $envPath = FCPATH . '../.env';
-            if (!file_exists($envPath)) {
-                @file_put_contents($envPath, "ENVIRONMENT = development\nCI_ENVIRONMENT = development\nGEMINI_API_KEY = '" . addslashes($apiKey) . "'\n");
-            } else {
-                $envContent = file_get_contents($envPath);
-                if (strpos($envContent, 'GEMINI_API_KEY') !== false) {
-                    $envContent = preg_replace('/GEMINI_API_KEY\s*=\s*.*/', 'GEMINI_API_KEY = \'' . addslashes($apiKey) . '\'', $envContent);
-                } else {
-                    $envContent .= "\nGEMINI_API_KEY = '" . addslashes($apiKey) . "'\n";
-                }
-                @file_put_contents($envPath, $envContent);
-            }
         }
 
         try {
@@ -77,23 +59,5 @@ class AiGenerator extends BaseAdminController
                 'message' => $e->getMessage()
             ]);
         }
-    }
-
-    public function saveApiKey()
-    {
-        $apiKey = trim($this->request->getPost('gemini_api_key') ?? '');
-        $envPath = FCPATH . '../.env';
-
-        if (file_exists($envPath)) {
-            $envContent = file_get_contents($envPath);
-            if (strpos($envContent, 'GEMINI_API_KEY') !== false) {
-                $envContent = preg_replace('/GEMINI_API_KEY\s*=\s*.*/', 'GEMINI_API_KEY = \'' . addslashes($apiKey) . '\'', $envContent);
-            } else {
-                $envContent .= "\nGEMINI_API_KEY = '" . addslashes($apiKey) . "'\n";
-            }
-            file_put_contents($envPath, $envContent);
-        }
-
-        return redirect()->back()->with('success', 'Gemini API Key saved successfully!');
     }
 }

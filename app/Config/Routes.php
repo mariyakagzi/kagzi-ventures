@@ -64,7 +64,6 @@ $routes->group('admin', static function ($routes) {
 
     // AI Generator Routes
     $routes->post('ai/generate', 'Admin\AiGenerator::generate');
-    $routes->post('ai/save-key', 'Admin\AiGenerator::saveApiKey');
 });
 
 /*

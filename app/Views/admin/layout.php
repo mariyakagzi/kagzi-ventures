@@ -171,7 +171,6 @@
             var fieldType = $btn.data('field');
             var productName = $('#name').val() ? $('#name').val().trim() : '';
             var categoryId = $('#category_id').val() ? $('#category_id').val() : 0;
-            var apiKey = $('#gemini_api_key_input').val() ? $('#gemini_api_key_input').val().trim() : '';
 
             if (!productName) {
                 alert('Please enter a Product Name first before generating AI content.');
@@ -188,8 +187,7 @@
                 data: {
                     field_type: fieldType,
                     product_name: productName,
-                    category_id: categoryId,
-                    api_key: apiKey
+                    category_id: categoryId
                 },
                 dataType: 'json',
                 timeout: 60000,
@@ -215,7 +213,6 @@
             e.preventDefault();
             var $btn = $(this);
             var catName = $('#name').val() ? $('#name').val().trim() : '';
-            var apiKey = $('#gemini_api_key_input').val() ? $('#gemini_api_key_input').val().trim() : '';
 
             if (!catName) {
                 alert('Please enter a Category Name first before generating AI description.');
@@ -231,8 +228,7 @@
                 type: 'POST',
                 data: {
                     field_type: 'category_description',
-                    category_name: catName,
-                    api_key: apiKey
+                    category_name: catName
                 },
                 dataType: 'json',
                 timeout: 60000,
@@ -252,35 +248,7 @@
                 }
             });
         });
-
-        $(document).on('click', '#btnToggleApiKey', function() {
-            var $input = $('#gemini_api_key_input');
-            var type = $input.attr('type') === 'password' ? 'text' : 'password';
-            $input.attr('type', type);
-            $(this).find('i').toggleClass('fa-eye fa-eye-slash');
-        });
     });
-
-    function saveGeminiKey() {
-        var keyVal = $('#gemini_api_key_input').val() ? $('#gemini_api_key_input').val().trim() : '';
-        if (!keyVal) {
-            alert('Please paste your Google Gemini API Key into the input field first.');
-            $('#gemini_api_key_input').focus();
-            return;
-        }
-
-        $.ajax({
-            url: '<?= base_url('admin/ai/save-key') ?>',
-            type: 'POST',
-            data: { gemini_api_key: keyVal },
-            success: function() {
-                alert('Success! Gemini API Key saved permanently.');
-            },
-            error: function() {
-                alert('API Key saved!');
-            }
-        });
-    }
     </script>
 </body>
 </html>
