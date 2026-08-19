@@ -211,17 +211,23 @@
                         box-shadow: 0 12px 25px rgba(29, 94, 184, 0.15);
                     }
                     .category-card-icon {
-                        width: 56px;
-                        height: 56px;
+                        width: 64px;
+                        height: 64px;
                         border-radius: 50%;
-                        background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
-                        color: #1D5EB8;
+                        overflow: hidden;
+                        background: #F8FAFC;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        font-size: 22px;
-                        margin-bottom: 12px;
-                        border: 1px solid #BFDBFE;
+                        margin-bottom: 14px;
+                        border: 2px solid #BFDBFE;
+                        box-shadow: 0 4px 12px rgba(29, 94, 184, 0.12);
+                        transition: all 0.25s ease;
+                    }
+                    .category-card-img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
                     }
                     .category-card-name {
                         font-size: 15px;
@@ -250,7 +256,11 @@
                                 <a href="<?= base_url('shop?category=' . esc($cat['slug'])) ?>" class="d-block h-100 text-decoration-none">
                                     <div class="category-card-item">
                                         <div class="category-card-icon">
-                                            <i class="fa fa-tag"></i>
+                                            <?php if (!empty($cat['image'])): ?>
+                                                <img src="<?= base_url($cat['image']) ?>" alt="<?= esc($cat['name']) ?>" class="category-card-img">
+                                            <?php else: ?>
+                                                <i class="fa fa-folder-open" style="font-size: 24px; color: #1D5EB8;"></i>
+                                            <?php endif; ?>
                                         </div>
                                         <h4 class="category-card-name"><?= esc($cat['name']) ?></h4>
                                         <span class="category-card-link">Explore Collection <i class="fa fa-arrow-right ml-1"></i></span>
