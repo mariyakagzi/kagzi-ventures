@@ -114,6 +114,12 @@
                 </div>
 
                 <div class="card p-3 bg-light border-0 mb-4">
+                    <label class="font-weight-bold text-dark"><i class="fa fa-images text-primary mr-1"></i> Additional Gallery Images</label>
+                    <input type="file" name="images[]" class="form-control-file" accept="image/*" multiple>
+                    <small class="text-muted mt-2 d-block">Optional. Select multiple images — shown as thumbnails below the main image on the product page.</small>
+                </div>
+
+                <div class="card p-3 bg-light border-0 mb-4">
                     <label class="font-weight-bold text-dark"><i class="fa fa-video text-danger mr-1"></i> Product Video (.mp4)</label>
                     <input type="file" name="video" class="form-control-file mb-2" accept="video/mp4, .mp4">
                     <small class="text-muted d-block mb-2">Upload MP4 video file (.mp4 format recommended)</small>

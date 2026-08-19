@@ -72,6 +72,22 @@ class Products extends BaseAdminController
             $videoPath = trim($this->request->getPost('video_url'));
         }
 
+        $galleryImages = [];
+        $galleryFiles  = $this->request->getFileMultiple('images') ?? [];
+        if (!empty($galleryFiles)) {
+            $uploadDir = FCPATH . 'uploads/products/gallery/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+            foreach ($galleryFiles as $imgFile) {
+                if ($imgFile && $imgFile->isValid() && !$imgFile->hasMoved()) {
+                    $newImgName = $imgFile->getRandomName();
+                    $imgFile->move($uploadDir, $newImgName);
+                    $galleryImages[] = 'uploads/products/gallery/' . $newImgName;
+                }
+            }
+        }
+
         $data = [
             'name'              => $name,
             'slug'              => $slug,
@@ -85,6 +101,7 @@ class Products extends BaseAdminController
             'specifications'    => trim($this->request->getPost('specifications')),
             'description'       => trim($this->request->getPost('description')),
             'main_image'        => $mainImagePath,
+            'images'            => !empty($galleryImages) ? json_encode($galleryImages) : null,
             'video'             => $videoPath,
             'featured'          => $this->request->getPost('featured') ? 1 : 0,
             'is_trending'       => $this->request->getPost('is_trending') ? 1 : 0,
@@ -162,6 +179,40 @@ class Products extends BaseAdminController
             $videoPath = trim($this->request->getPost('video_url'));
         }
 
+        $galleryImages = [];
+        if (!empty($product['images'])) {
+            $decoded = json_decode($product['images'], true);
+            if (is_array($decoded)) {
+                $galleryImages = $decoded;
+            }
+        }
+
+        $removeImages = $this->request->getPost('remove_images') ?? [];
+        if (!empty($removeImages) && is_array($removeImages)) {
+            $galleryImages = array_values(array_diff($galleryImages, $removeImages));
+            foreach ($removeImages as $rmPath) {
+                $fullPath = FCPATH . ltrim($rmPath, '/');
+                if (is_file($fullPath)) {
+                    @unlink($fullPath);
+                }
+            }
+        }
+
+        $newGalleryFiles = $this->request->getFileMultiple('images') ?? [];
+        if (!empty($newGalleryFiles)) {
+            $uploadDir = FCPATH . 'uploads/products/gallery/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+            foreach ($newGalleryFiles as $imgFile) {
+                if ($imgFile && $imgFile->isValid() && !$imgFile->hasMoved()) {
+                    $newImgName = $imgFile->getRandomName();
+                    $imgFile->move($uploadDir, $newImgName);
+                    $galleryImages[] = 'uploads/products/gallery/' . $newImgName;
+                }
+            }
+        }
+
         $updateData = [
             'name'              => $name,
             'slug'              => $slug,
@@ -175,6 +226,7 @@ class Products extends BaseAdminController
             'specifications'    => trim($this->request->getPost('specifications')),
             'description'       => trim($this->request->getPost('description')),
             'main_image'        => $mainImagePath,
+            'images'            => !empty($galleryImages) ? json_encode(array_values($galleryImages)) : null,
             'video'             => $videoPath,
             'featured'          => $this->request->getPost('featured') ? 1 : 0,
             'is_trending'       => $this->request->getPost('is_trending') ? 1 : 0,

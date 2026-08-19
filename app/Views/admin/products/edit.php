@@ -114,6 +114,34 @@
                 </div>
 
                 <div class="card p-3 bg-light border-0 mb-4">
+                    <label class="font-weight-bold text-dark"><i class="fa fa-images text-primary mr-1"></i> Additional Gallery Images</label>
+                    <?php
+                        $galleryImgs = [];
+                        if (!empty($product['images'])) {
+                            $decodedImgs = json_decode($product['images'], true);
+                            if (is_array($decodedImgs)) {
+                                $galleryImgs = $decodedImgs;
+                            }
+                        }
+                    ?>
+                    <?php if (!empty($galleryImgs)): ?>
+                        <div class="d-flex flex-wrap mb-2" style="gap: 8px;">
+                            <?php foreach ($galleryImgs as $gIdx => $gImg): ?>
+                                <div class="text-center border rounded p-1 bg-white" style="width: 78px;">
+                                    <img src="<?= base_url($gImg) ?>" alt="Gallery image" style="width: 100%; height: 60px; object-fit: contain;">
+                                    <div class="custom-control custom-checkbox mt-1">
+                                        <input type="checkbox" name="remove_images[]" class="custom-control-input" id="removeImg<?= $gIdx ?>" value="<?= esc($gImg) ?>">
+                                        <label class="custom-control-label text-danger" for="removeImg<?= $gIdx ?>" style="font-size: 0.7rem;">Remove</label>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                    <input type="file" name="images[]" class="form-control-file" accept="image/*" multiple>
+                    <small class="text-muted mt-2 d-block">Add more gallery images, or check "Remove" under an image above to delete it.</small>
+                </div>
+
+                <div class="card p-3 bg-light border-0 mb-4">
                     <label class="font-weight-bold text-dark"><i class="fa fa-video text-danger mr-1"></i> Product Video (.mp4)</label>
                     <?php if (!empty($product['video'])): ?>
                         <div class="mb-2 p-2 bg-white border rounded">

@@ -28,24 +28,40 @@
                             </div>
                         <?php endif; ?>
 
-                        <?php 
+                        <?php
                         $galleryImages = array_merge([$product['main_image']], $extraImages ?? []);
                         $galleryImages = array_values(array_unique(array_filter($galleryImages)));
                         $hasMultipleImages = count($galleryImages) > 1;
                         ?>
 
+                        <div class="product-single-image-wrapper text-center p-2 bg-white rounded border" style="border-radius: 12px !important;">
+                            <img id="productMainImage" class="product-single-image rounded img-fluid" src="<?= base_url($galleryImages[0]) ?>" data-zoom-image="<?= base_url($galleryImages[0]) ?>" width="468" height="468" alt="<?= esc($product['name']) ?>" style="object-fit: contain; max-height: 468px; width: 100%;" />
+                        </div>
+
                         <?php if ($hasMultipleImages): ?>
-                            <div class="product-single-carousel owl-carousel owl-theme show-nav-hover">
-                                <?php foreach ($galleryImages as $img): ?>
-                                    <div class="product-item">
-                                        <img class="product-single-image" src="<?= base_url($img) ?>" data-zoom-image="<?= base_url($img) ?>" width="468" height="468" alt="<?= esc($product['name']) ?>" style="object-fit: contain;" />
+                            <div class="product-thumb-strip d-flex flex-wrap mt-3" style="gap: 10px;">
+                                <?php foreach ($galleryImages as $tIdx => $tImg): ?>
+                                    <div class="product-thumb-item<?= $tIdx === 0 ? ' active' : '' ?>" data-full="<?= base_url($tImg) ?>" onclick="kvSwapProductImage(this)" role="button" tabindex="0" aria-label="View image <?= $tIdx + 1 ?>" style="width: 68px; height: 68px; border: 2px solid <?= $tIdx === 0 ? '#1D5EB8' : '#E2E8F0' ?>; border-radius: 8px; overflow: hidden; cursor: pointer; padding: 3px; background: #fff; transition: border-color 0.2s;">
+                                        <img src="<?= base_url($tImg) ?>" alt="<?= esc($product['name']) ?> thumbnail <?= $tIdx + 1 ?>" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
                                     </div>
                                 <?php endforeach; ?>
                             </div>
-                        <?php else: ?>
-                            <div class="product-single-image-wrapper text-center p-2 bg-white rounded border" style="border-radius: 12px !important;">
-                                <img class="product-single-image rounded img-fluid" src="<?= base_url($product['main_image']) ?>" data-zoom-image="<?= base_url($product['main_image']) ?>" width="468" height="468" alt="<?= esc($product['name']) ?>" style="object-fit: contain; max-height: 468px; width: 100%;" />
-                            </div>
+                            <script>
+                                function kvSwapProductImage(el) {
+                                    var full = el.getAttribute('data-full');
+                                    var mainImg = document.getElementById('productMainImage');
+                                    if (mainImg) {
+                                        mainImg.src = full;
+                                        mainImg.setAttribute('data-zoom-image', full);
+                                    }
+                                    document.querySelectorAll('.product-thumb-item').forEach(function (t) {
+                                        t.style.borderColor = '#E2E8F0';
+                                        t.classList.remove('active');
+                                    });
+                                    el.style.borderColor = '#1D5EB8';
+                                    el.classList.add('active');
+                                }
+                            </script>
                         <?php endif; ?>
                     </div>
 
