@@ -38,6 +38,7 @@ $routes->get('shitabi-gifts', 'Shop::shitabiGifts');
 $routes->get('shop/category/(:segment)', 'Shop::index/$1');
 $routes->get('category/(:segment)', 'Shop::index/$1');
 $routes->get('product/(:segment)', 'Product::detail/$1');
+$routes->get('sitemap.xml', 'Sitemap::index');
 
 // Admin Routes
 $routes->group('admin', static function ($routes) {
